@@ -4,7 +4,7 @@ const port = 4444
 
 app.get('/',function(req,res){
   res.sendfile("html/index.html");
-  console.log(req.body)
+  console.log(req['headers'])
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Server listening on port http://127.0.0.1:${port}`))
