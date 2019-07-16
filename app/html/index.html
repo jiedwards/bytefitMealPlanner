@@ -1,8 +1,174 @@
+<!DOCTYPE html>
 <html>
+
+
+
 <head>
+    <link rel="stylesheet" href="../plugins/bootstrap_css/bootstrap.min.css">        
 <title>ByteFit</title>
 </head>
 <body>
 <h1>Hello World!</h1>
+
+<h1>Fill out the details below to find out how many calories you should be eating</h1>
+
+<button type="button" class="btn-sm btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+        How many calories do I need?
+      </button>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Find out how many calories you should be eating</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+
+        My goal is to:
+
+        <select id="endGoal" class="col-lg-8 dropdown-toggler">
+                <option value="0" selected="selected">Maintain Weight</option>
+                <option value="-300">Lose Weight</option>
+                <option value="300">Gain Weight</option>
+            </select>
+
+<fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+            <div class="col-sm-10">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" onclick="profileTest(this)" name="gender" id="male" value="male">
+                <label class="form-check-label" for="male">
+                Male
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" onclick="profileTest(this)" name="gender" id="female" value="female">
+                <label class="form-check-label" for="female">
+                Female
+                </label>
+            </div>
+            </div>
+        </div>
+    </fieldset>
+<br>
+
+  <div class="form-group row">
+    <label for="height" class="col-sm-2 col-form-label">Height</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="height" placeholder="Height (in cm's)">
+    </div>
+    </div>
+    <div class="form-group row">
+    <label for="weight" class="col-sm-2 col-form-label">Weight</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="weight" placeholder="Weight (in kg's)">
+    </div>
+    </div>
+    <div class="form-group row">
+    <label for="weight" class="col-sm-2 col-form-label">Age</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="age" placeholder="21">
+    </div>
+    </div>
+<br>
+  Input your activity level
+
+  <select id="activityLevel" class="col-lg-8 dropdown-toggler">
+        <option value="1.2">Sedentary</option>
+        <option value="1.375">Lightly Active</option>
+        <option value="1.55" selected="selected">Moderately Active</option>
+        <option value="1.725">Very Active</option>
+        <option value="1.9">Extremely Active</option>
+      </select>
+<br>
+<br>
+<button onclick="calculate()" class="btn btn-primary">Calculate my calorie intake</button>
+<br>
+<h3 id="answer"></h3>
+
+
+
+
+<script>
+
+    var gender;
+
+function profileTest(genderProfile) {
+    if (genderProfile.value == "male"){
+        gender = genderProfile.value;
+    }
+    else if (genderProfile.value == "female") {
+        gender = genderProfile.value;
+    }
+}
+
+function calculate() {
+
+    var height=document.getElementById("height").value;
+    var weight=document.getElementById("weight").value;
+    var age=document.getElementById("age").value;
+    var activityLevel = document.getElementById("activityLevel");
+    activityLevel = activityLevel.options[activityLevel.selectedIndex].value;
+    var endGoal = document.getElementById("endGoal");
+    var endGoalText = endGoal.options[endGoal.selectedIndex].text;
+    var radios = document.getElementsByName('activityLevel');
+
+    for (var i = 0, length = radios.length; i < length; i++){
+    if (radios[i].checked) {
+        activityLevel = radios[i].value;
+        console.log("test" + activityLevel);
+    }
+    }
+
+    if (gender == "male"){
+        console.log(endGoalText);
+        console.log(endGoal.value);
+        if (endGoalText == "Lose Weight")
+        {
+            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel) - endGoal.value);
+        }
+        else if (endGoalText == "Gain Weight")
+        {
+            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel) + endGoal.value);
+        }
+        else if (endGoalText == "Maintain Weight")
+        {
+            var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel);
+        }
+        // console.log("TEST" + endGoalText);
+
+        // console.log(endGoal + "test" + endGoal.value + "test" + endGoal.text)
+        // console.log("LEVEL : BOOM " + activityLevel)
+        // console.log("LEVEL : goal " + endGoal)
+        // var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel) + endGoal || - endGoal;
+    }
+    else if (gender == "female"){
+        console.log("LEVEL : FEMALE " + activityLevel)
+        console.log("LEVEL : goal " + endGoal)
+        var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) - 161) * activityLevel) + endGoal || - endGoal;
+    }
+    document.getElementById("answer").innerHTML="Your expected daily calorie intake is " +Math.round(result); 
+
+    
+}
+</script>
+</div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
