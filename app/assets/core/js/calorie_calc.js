@@ -33,11 +33,11 @@ function calculate() {
         console.log(endGoal.value);
         if (endGoalText == "Lose Weight")
         {
-            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel) - endGoal.value);
+            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel) - parseInt(endGoal.value));
         }
         else if (endGoalText == "Gain Weight")
         {
-            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel) + endGoal.value);
+            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel)) + parseInt(endGoal.value);
         }
         else if (endGoalText == "Maintain Weight")
         {
@@ -51,9 +51,22 @@ function calculate() {
         // var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel) + endGoal || - endGoal;
     }
     else if (gender == "female"){
-        console.log("LEVEL : FEMALE " + activityLevel)
-        console.log("LEVEL : goal " + endGoal)
-        var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) - 161) * activityLevel) + endGoal || - endGoal;
+        if (endGoalText == "Lose Weight")
+        {
+            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) - 161) * activityLevel) - endGoal.value);
+            console.log("TEST" + result);
+        }
+        else if (endGoalText == "Gain Weight")
+        {
+            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) - 161) * activityLevel) + endGoal.value);
+            console.log("TEST" + result);
+        }
+        else if (endGoalText == "Maintain Weight")
+        {
+            var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) - 161) * activityLevel);
+            console.log("TEST" + result);
+        }
+
     }
     document.getElementById("answer").innerHTML="Your expected calorie intake (daily) is: " +Math.round(result); 
 }
