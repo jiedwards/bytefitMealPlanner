@@ -78,13 +78,14 @@ function calculate() {
         },
         body: JSON.stringify(data)
     };
-    // send a POST request to /api in index.js then do some parsing to convert it from a ReadableStream to a string
+    // send a POST request to /api in index.js, the data can then be parsed serverside (added to db). 
+    // the server will respond purely by reflecting the data which is good for debugging, but probably going to be deleted eventually.
+    // .then down top the console log can go tbf
     fetch('/api', options).then(function(response) {
         return response.text();
     }).then(function(data) {
         console.log(data); // this will be a string
     });
-
     // return both uuid and result
     return data;
 }
