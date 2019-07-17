@@ -58,8 +58,11 @@ function calculate() {
         }
 
     }
+
+    result=Math.round(result);
     // Write the result to the screen
-    document.getElementById("answer").innerHTML = "Your expected calorie intake (daily) is: " + Math.round(result);
+    document.getElementById("answer").innerHTML = "Your expected calorie intake (daily) is: " + result;
+    document.getElementById("calories").value = result;
 
     // Get a new UUID.
     const uuid = uuidv4()
