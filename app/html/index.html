@@ -26,13 +26,13 @@
               </button>
             </div>
             <div class="modal-body">
-              <div class="container">
+              <div class="container text-center">
 
-        My goal is to:
-
+        My goal is to
+<br>
         <select id="endGoal" class="col-lg-8 dropdown-toggler">
                 <option value="0" selected="selected">Maintain Weight</option>
-                <option value="-300">Lose Weight</option>
+                <option value="300">Lose Weight</option>
                 <option value="300">Gain Weight</option>
             </select>
 
@@ -140,17 +140,20 @@ function calculate() {
         {
             var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel);
         }
-        // console.log("TEST" + endGoalText);
-
-        // console.log(endGoal + "test" + endGoal.value + "test" + endGoal.text)
-        // console.log("LEVEL : BOOM " + activityLevel)
-        // console.log("LEVEL : goal " + endGoal)
-        // var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel) + endGoal || - endGoal;
     }
     else if (gender == "female"){
-        console.log("LEVEL : FEMALE " + activityLevel)
-        console.log("LEVEL : goal " + endGoal)
-        var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) - 161) * activityLevel) + endGoal || - endGoal;
+        if (endGoalText == "Lose Weight")
+        {
+            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) - 161) * activityLevel) - endGoal.value);
+        }
+        else if (endGoalText == "Gain Weight")
+        {
+            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) - 161) * activityLevel) + endGoal.value);
+        }
+        else if (endGoalText == "Maintain Weight")
+        {
+            var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) - 161) * activityLevel);
+        }
     }
     document.getElementById("answer").innerHTML="Your expected daily calorie intake is " +Math.round(result); 
 
