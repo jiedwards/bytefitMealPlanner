@@ -14,6 +14,6 @@ app.post('/api',(request,response) => {
 	response.json({
 		status:'success',
 		user: data.uuid,
-		result: data.r
+		result: data.result
 	});
 });
