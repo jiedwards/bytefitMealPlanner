@@ -74,7 +74,6 @@ function calculate() {
         weight = document.getElementById("imperialWeight").value;
         heightMultiplier = 15.88;
         weightMultiplier = 4.536;
-        console.log(height + "TEST");
     }else if(unitConf=="metric"){
         height = document.getElementById("metricHeight").value;
         weight = document.getElementById("metricWeight").value;
@@ -111,14 +110,29 @@ function calculate() {
     // Write the result to the screen
     document.getElementById("answer").innerHTML = "Your expected calorie intake (daily) is: " + result;
     document.getElementById("calories").value = result;
+    return result;
+}
 
+
+function go(){
+    // how many calories btn purely fills a box now, when go! is hit, this function is ran.
+
+    // this doesnt do any calculations, it just prepares for the next stage.
+    calories=document.getElementById("calories").value
+    num_meals=document.getElementById("num_meals").value
+
+    if (calories == ""){
+        console.log('No calories specified');
+        return null;
+    }
     // Get a new UUID.
     const uuid = uuidv4()
 
     // package the calorie number and an identifier together into a json object
     const data = {
         uuid,
-        result
+        calories,
+        num_meals
     };
 
     // Define the headers for the POST request
