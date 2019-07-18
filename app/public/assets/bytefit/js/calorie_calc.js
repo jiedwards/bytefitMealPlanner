@@ -1,4 +1,7 @@
 var gender;
+var unitConf = "imperial";
+var weightMultiplier;
+var heightMultiplier;
 
 (function() {
     ('[data-toggle="tooltip"]').tooltip();   
@@ -13,6 +16,7 @@ function uuidv4() {
     });
 }
 
+// Function to read gender, is read immediately if changed
 function profileTest(genderProfile) {
     if (genderProfile.value == "male") {
         gender = genderProfile.value;
@@ -21,30 +25,71 @@ function profileTest(genderProfile) {
     }
 }
 
+// Function to read unit choice, this is used to hide/show div's, WIP - will be used to change the equation
+function unitChoice(choice) {
+    document.getElementById('imperialUnits').style.display='none';
+    document.getElementById('metricUnits').style.display='none';
+    unitConf = choice.value;
+    console.log(unitConf);
+
+    if(unitConf=="imperial"){
+        $("#metricUnits").hide()
+        $("#imperialUnits").show()
+        // document.getElementById('metricUnits').style.display='none';
+        // document.getElementById('imperialUnits').style.display='block';
+    }else if(unitConf=="metric"){
+        $("#imperialUnits").hide()
+        $("#metricUnits").show()
+        // document.getElementById('metricUnits').style.display='block';
+        // document.getElementById('imperialUnits').style.display='none';
+    }
+    
+
+    var unitType = document.getElementById("unitType");
+    unitConf = unitType.options[unitType.selectedIndex].value;
+
+    }
+
 function calculate() {
     //heavy lifting!
-    var height = document.getElementById("height").value;
-    var weight = document.getElementById("weight").value;
+    console.log("testing" + unitConf);
+
     var age = document.getElementById("age").value;
     var activityLevel = document.getElementById("activityLevel");
     activityLevel = activityLevel.options[activityLevel.selectedIndex].value;
     var endGoal = document.getElementById("endGoal");
     var endGoalText = endGoal.options[endGoal.selectedIndex].text;
     var radios = document.getElementsByName('activityLevel');
+    var unitType = document.getElementById("unitType");
+    var unitType = unitType.options[unitType.selectedIndex].text;
 
     for (var i = 0, length = radios.length; i < length; i++) {
         if (radios[i].checked) {
             activityLevel = radios[i].value;
         }
     }
+//RETURN HERE AND FIGURE OUT CALCULATION FROM FT + IN into single value, readable only when dropdown has selected imperial/metric
+    if(unitConf=="imperial"){
+        console.log("TEST" + document.getElementById("imperialHeightFt").value)
+        height = ((document.getElementById("imperialHeightFt").value) * 5) + (document.getElementById("imperialHeightIn").value);
+        weight = document.getElementById("imperialWeight").value;
+        heightMultiplier = 15.88;
+        weightMultiplier = 4.536;
+        console.log(height + "TEST");
+    }else if(unitConf=="metric"){
+        height = document.getElementById("metricHeight").value;
+        weight = document.getElementById("metricWeight").value;
+        heightMultiplier = 6.25;
+        weightMultiplier = 10;
+    }
 
     if (gender == "male") {
         if (endGoalText == "Lose Weight") {
-            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel) - parseInt(endGoal.value));
+            var result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) + 5) * activityLevel) - parseInt(endGoal.value));
         } else if (endGoalText == "Gain Weight") {
-            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel)) + parseInt(endGoal.value);
+            var result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) + 5) * activityLevel)) + parseInt(endGoal.value);
         } else if (endGoalText == "Maintain Weight") {
-            var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel);
+            var result = (((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) + 5) * activityLevel);
         }
         // console.log("TEST" + endGoalText);
 
@@ -54,11 +99,11 @@ function calculate() {
         // var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel) + endGoal || - endGoal;
     } else if (gender == "female") {
         if (endGoalText == "Lose Weight") {
-            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) - 161) * activityLevel) - endGoal.value);
+            var result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) - 161) * activityLevel) - endGoal.value);
         } else if (endGoalText == "Gain Weight") {
-            var result = ((((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) - 161) * activityLevel) + endGoal.value);
+            var result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) - 161) * activityLevel) + endGoal.value);
         } else if (endGoalText == "Maintain Weight") {
-            var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) - 161) * activityLevel);
+            var result = (((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) - 161) * activityLevel);
         }
 
     }
