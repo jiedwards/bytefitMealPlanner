@@ -32,6 +32,7 @@ app.post('/api', (request, response) => {
         status: 'success',
         timestamp: data.timestamp,
         user: data.uuid,
-        result: data.result
+        calories: data.calories,
+        num_meals: data.num_meals
     });
 });
