@@ -6,28 +6,59 @@
     <link rel="stylesheet" href="/assets/core/css/styles.css">
     <link rel="stylesheet" href="/assets/fontawesome/fontawesome.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/thirdparty/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/bytefit/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <title>ByteFit</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/users/register/">Register</a>
+                </li>
             </ul>
         </div>
     </nav>
-    </br>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">ByteFit</h1>
+            <p class="lead text-muted">ByteFit, an application to find what to eat.</p>
+    </section>
     <div class="container">
 
             
+        <div class="text-center">
+            <span>I want to eat <input id="calories" /> calories across
+                <select>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option selected value='4'>4</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
+                    <option value='7'>7</option>
+                    <option value='8'>8</option>
+                    <option value='9'>9</option>
+                </select>
+                meals
+                <button type="button" class="btn btn-primary" onclick="get_userdata()">
+                    go!
+                </button></span>
+        </div>
         <div>
-            <button type="button" class="btn-sm btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-                How many calories do I need?
-            </button>
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            </br>
+            <div class="text-center">
+                <button type="button" class="btn-sm btn-success" data-toggle="modal" data-target="#caloriescalc">
+                    How many calories do I need?
+                </button>
+            </div>
+            <div class="modal fade" id="caloriescalc" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -136,12 +167,17 @@
             </div>
         </div>
     </div>
-    <script src="/assets/jquery/jquery.js"></script>
-    <script src="/assets/core/js/calorie_calc.js"></script>
+    </div>
+    <!-- ByteFit Code -->
+    <script src="/assets/bytefit/js/calorie_calc.js"></script>
+    <script src="/assets/bytefit/js/meals.js"></script>
     <script src="/assets/core/js/widgets.js"></script>
-    <script src="/assets/fontawesome/all.js"></script>
-    <script src="/assets/popper/popper.js"></script>
-    <script src="/assets/bootstrap/js/bootstrap.js"></script>
+    <!-- Third-party Code -->
+    <script src="/assets/thirdparty/jquery/jquery.js"></script>
+    <script src="/assets/thirdparty/popper/popper.js"></script>
+    <script src="/assets/thirdparty/bootstrap/js/bootstrap.js"></script>
+    <script src="/assets/thirdparty/fontawesome/all.js"></script>
+
 </body>
 
 </html>
