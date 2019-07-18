@@ -2,19 +2,10 @@
 <html>
 
 <head>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/assets/core/css/styles.css">
-    <link rel="stylesheet" href="/assets/fontawesome/fontawesome.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/thirdparty/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/assets/bytefit/css/styles.css">
-=======
     <link rel="stylesheet" href="assets/thirdparty/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="assets/bytefit/css/styles.css">
     <link rel="stylesheet" href="assets/thirdparty/fontawesome/fontawesome.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
->>>>>>> e9f24cee40ff6d1f470bf2444eba62f08bf0740e
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <title>ByteFit</title>
 </head>
@@ -61,7 +52,7 @@
         <div>
             </br>
             <div class="text-center">
-                <button type="button" class="btn-sm btn-success" data-toggle="modal" data-target="#caloriescalc">
+                <button type="button" class="btn-sm btn-success" data-toggle="modal" onclick="unitChoice(this)" data-target="#caloriescalc">
                     How many calories do I need?
                 </button>
             </div>
@@ -106,40 +97,66 @@
                                     </div>
                                 </fieldset>
                                 Unit input
-                                <select id="inputType" class="col-lg-8 dropdown-toggler">
-                                        <option value="metric" selected="selected">Imperial System</option>
-                                        <option value="imperial">Metric System</option>
+                                <select id="unitType" class="col-lg-8 dropdown-toggler" onclick="unitChoice(this)">
+                                        <option value="metric">Imperial System</option>
+                                        <option value="imperial" selected="selected">Metric System</option>
                                     </select>
                                 <br>
                                 <br>
+                                <div id="metricUnits">
                                 <div class="form-group row">
                                     <label for="height" class="col-sm-2 col-form-label">Height</label>
                                     <div class="heightMetric col-sm-10">
-                                        <input type="text" class="form-control" id="height" placeholder="Height (in cm's)">
+                                        <input type="text" class="form-control" id="metricHeight" placeholder="Height (in cm's)" required>
                                     </div>
+                                </div>
 
-                                    <div class="heightImperial row col-sm-10">
+                                    <div class="form-group row">
+                                            <label for="weight" class="col-sm-2 col-form-label">Weight</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="metricWeight" placeholder="Weight (in kg's)">
+                                            </div>
+                                        </div>
+                                    </div> 
+
+                                    <div id="imperialUnits">
+                                    <div class="row col-sm-10">
                                             <label for="height" class="col-sm-2 col-form-label">Height</label>
-                                            <select id="height" class="col-sm-5 dropdown-toggler">
+                                            <select id="height" class="col-sm-5 dropdown-toggler" id="imperialHeightFt">
                                                     <option value="3">3 ft</option>
                                                     <option value="4">4 ft</option>
                                                     <option value="5" selected="selected">5 ft</option>   
                                                     <option value="6">6 ft</option>
                                                     <option value="7">7 ft</option> 
                                             </select>
-                                            <input type="text" class="form-control col-sm-5" id="height" placeholder="inches">
+                                            <select id="height" class="col-sm-5 dropdown-toggler" id="imperialHeightInch">
+                                                    <option value="1">1 inch</option>
+                                                    <option value="2">2 inches</option>
+                                                    <option value="3" selected="selected">3 inches</option>   
+                                                    <option value="4">4 inches</option>
+                                                    <option value="5">5 inches</option> 
+                                                    <option value="6">6 inches</option>
+                                                    <option value="7">7 inches</option>
+                                                    <option value="8">8 inches</option>   
+                                                    <option value="9">9 inches</option>
+                                                    <option value="10">10 inches</option>
+                                                    <option value="11">11 inches</option>
+                                                    <option value="12">12 inches</option> 
+                                            </select>
+                                    </div>
+                                    <div class="form-group row">
+                                            <label for="weight" class="col-sm-2 col-form-label">Weight</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="imperialWeight" placeholder="Weight (in kg's)">
+                                            </div>
+                                        </div>
                                     </div>
 
 
                                 </div>
+                                
                                 <div class="form-group row">
-                                    <label for="weight" class="col-sm-2 col-form-label">Weight</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="weight" placeholder="Weight (in kg's)">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="weight" class="col-sm-2 col-form-label">Age</label>
+                                    <label for="age" class="col-sm-2 col-form-label">Age</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="age" placeholder="21">
                                     </div>
@@ -176,16 +193,6 @@
     </div>
     </div>
     <!-- ByteFit Code -->
-<<<<<<< HEAD
-    <script src="/assets/bytefit/js/calorie_calc.js"></script>
-    <script src="/assets/bytefit/js/meals.js"></script>
-    <script src="/assets/core/js/widgets.js"></script>
-    <!-- Third-party Code -->
-    <script src="/assets/thirdparty/jquery/jquery.js"></script>
-    <script src="/assets/thirdparty/popper/popper.js"></script>
-    <script src="/assets/thirdparty/bootstrap/js/bootstrap.js"></script>
-    <script src="/assets/thirdparty/fontawesome/all.js"></script>
-=======
     <script src="assets/bytefit/js/calorie_calc.js"></script>
     <script src="assets/bytefit/js/meals.js"></script>
     <script src="assets/bytefit/js/widget.js"></script>
@@ -194,7 +201,6 @@
     <script src="assets/thirdparty/popper/popper.js"></script>
     <script src="assets/thirdparty/bootstrap/js/bootstrap.js"></script>
     <script src="assets/thirdparty/fontawesome/all.js"></script>
->>>>>>> e9f24cee40ff6d1f470bf2444eba62f08bf0740e
 
 </body>
 
