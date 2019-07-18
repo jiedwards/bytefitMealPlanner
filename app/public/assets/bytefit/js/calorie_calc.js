@@ -3,6 +3,11 @@ var unitConf = "imperial";
 var weightMultiplier;
 var heightMultiplier;
 
+document.getElementById('metricUnits').style.display='none';
+document.getElementById('imperialUnits').style.display='none';
+
+
+
 (function() {
     ('[data-toggle="tooltip"]').tooltip();   
 });
@@ -25,34 +30,27 @@ function profileTest(genderProfile) {
     }
 }
 
+var imp;
 // Function to read unit choice, this is used to hide/show div's, WIP - will be used to change the equation
-function unitChoice(choice) {
-    document.getElementById('imperialUnits').style.display='none';
-    document.getElementById('metricUnits').style.display='none';
-    unitConf = choice.value;
-    console.log(unitConf);
 
-    if(unitConf=="imperial"){
+
+
+function unitChoice(choice) {
+
+    if (choice.value == "imperial") {
+        unitConf = choice.value;
         $("#metricUnits").hide()
         $("#imperialUnits").show()
-        // document.getElementById('metricUnits').style.display='none';
-        // document.getElementById('imperialUnits').style.display='block';
-    }else if(unitConf=="metric"){
+    } else if (choice.value == "metric") {
+        unitConf = choice.value;
         $("#imperialUnits").hide()
         $("#metricUnits").show()
-        // document.getElementById('metricUnits').style.display='block';
-        // document.getElementById('imperialUnits').style.display='none';
     }
-    
-
-    var unitType = document.getElementById("unitType");
-    unitConf = unitType.options[unitType.selectedIndex].value;
-
     }
 
 function calculate() {
     //heavy lifting!
-    console.log("testing" + unitConf);
+    
 
     var age = document.getElementById("age").value;
     var activityLevel = document.getElementById("activityLevel");
@@ -60,9 +58,6 @@ function calculate() {
     var endGoal = document.getElementById("endGoal");
     var endGoalText = endGoal.options[endGoal.selectedIndex].text;
     var radios = document.getElementsByName('activityLevel');
-    var unitType = document.getElementById("unitType");
-    var unitType = unitType.options[unitType.selectedIndex].text;
-
     for (var i = 0, length = radios.length; i < length; i++) {
         if (radios[i].checked) {
             activityLevel = radios[i].value;
