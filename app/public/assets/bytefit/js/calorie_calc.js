@@ -51,7 +51,6 @@ function unitChoice(choice) {
 function calculate() {
     //heavy lifting!
     
-
     var age = document.getElementById("age").value;
     var activityLevel = document.getElementById("activityLevel");
     activityLevel = activityLevel.options[activityLevel.selectedIndex].value;
@@ -65,8 +64,13 @@ function calculate() {
     }
 //RETURN HERE AND FIGURE OUT CALCULATION FROM FT + IN into single value, readable only when dropdown has selected imperial/metric
     if(unitConf=="imperial"){
-        console.log("TEST" + document.getElementById("imperialHeightFt").value)
-        height = ((document.getElementById("imperialHeightFt").value) * 5) + (document.getElementById("imperialHeightIn").value);
+
+    var imperialHeightFt = document.getElementById("imperialHeightFt");
+    var imperialHeightFtUnit = imperialHeightFt.options[imperialHeightFt.selectedIndex].value;
+    var imperialHeightInch = document.getElementById("imperialHeightInch");
+    var imperialHeightInchUnit = imperialHeightInch.options[imperialHeightInch.selectedIndex].value;
+
+        height = (((imperialHeightFtUnit) * 12) + parseInt(imperialHeightInchUnit));
         weight = document.getElementById("imperialWeight").value;
         heightMultiplier = 15.88;
         weightMultiplier = 4.536;
