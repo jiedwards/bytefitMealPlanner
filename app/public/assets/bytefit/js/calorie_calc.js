@@ -33,6 +33,7 @@ function unitChoice(choice) {
     console.log(unitConf);
 
     if(unitConf=="imperial"){
+        $("#metricUnits").hide()
         $("#imperialUnits").show()
         // document.getElementById('metricUnits').style.display='none';
         // document.getElementById('imperialUnits').style.display='block';
