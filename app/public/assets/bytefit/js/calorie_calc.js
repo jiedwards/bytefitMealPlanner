@@ -3,13 +3,12 @@ var unitConf = "imperial";
 var weightMultiplier;
 var heightMultiplier;
 
-document.getElementById('metricUnits').style.display='none';
-document.getElementById('imperialUnits').style.display='none';
-
+document.getElementById('metricUnits').style.display = 'none';
+document.getElementById('imperialUnits').style.display = 'none';
 
 
 (function() {
-    ('[data-toggle="tooltip"]').tooltip();   
+    ('[data-toggle="tooltip"]').tooltip();
 });
 
 // UUID generation function. In time, this will be replaced with a cookie to identify the user. 
@@ -46,11 +45,11 @@ function unitChoice(choice) {
         $("#imperialUnits").hide()
         $("#metricUnits").show()
     }
-    }
+}
 
 function calculate() {
     //heavy lifting!
-    
+
     var age = document.getElementById("age").value;
     var activityLevel = document.getElementById("activityLevel");
     activityLevel = activityLevel.options[activityLevel.selectedIndex].value;
@@ -62,19 +61,19 @@ function calculate() {
             activityLevel = radios[i].value;
         }
     }
-//RETURN HERE AND FIGURE OUT CALCULATION FROM FT + IN into single value, readable only when dropdown has selected imperial/metric
-    if(unitConf=="imperial"){
+    //RETURN HERE AND FIGURE OUT CALCULATION FROM FT + IN into single value, readable only when dropdown has selected imperial/metric
+    if (unitConf == "imperial") {
 
-    var imperialHeightFt = document.getElementById("imperialHeightFt");
-    var imperialHeightFtUnit = imperialHeightFt.options[imperialHeightFt.selectedIndex].value;
-    var imperialHeightInch = document.getElementById("imperialHeightInch");
-    var imperialHeightInchUnit = imperialHeightInch.options[imperialHeightInch.selectedIndex].value;
+        var imperialHeightFt = document.getElementById("imperialHeightFt");
+        var imperialHeightFtUnit = imperialHeightFt.options[imperialHeightFt.selectedIndex].value;
+        var imperialHeightInch = document.getElementById("imperialHeightInch");
+        var imperialHeightInchUnit = imperialHeightInch.options[imperialHeightInch.selectedIndex].value;
 
         height = (((imperialHeightFtUnit) * 12) + parseInt(imperialHeightInchUnit));
         weight = document.getElementById("imperialWeight").value;
         heightMultiplier = 15.88;
         weightMultiplier = 4.536;
-    }else if(unitConf=="metric"){
+    } else if (unitConf == "metric") {
         height = document.getElementById("metricHeight").value;
         weight = document.getElementById("metricWeight").value;
         heightMultiplier = 6.25;
@@ -106,7 +105,7 @@ function calculate() {
 
     }
 
-    result=Math.round(result);
+    result = Math.round(result);
     // Write the result to the screen
     document.getElementById("answer").innerHTML = "Your expected calorie intake (daily) is: " + result;
     document.getElementById("calories").value = result;
@@ -114,14 +113,56 @@ function calculate() {
 }
 
 
-function go(){
+function generate_table(data) {
+    let uuid = data.uuid;
+    let calories = data.calories;
+    let num_meals = data.num_meals;
+
+    // get the reference for the body
+    var body = document.getElementsByTagName("body")[0];
+
+    // creates a <table> element and a <tbo> element
+    var tbl = document.createElement("table");
+    tbl.className='table table-bordered table-striped text-center'
+    var tblBody = document.createElement("tbody");
+
+    // creates table rows from the number of meals
+    for (var i = 0; i < num_meals; i++) {
+        var row = document.createElement("tr");
+
+        // creates table rows (this should match up against macros or something)
+        for (var j = 0; j < 4; j++) {
+            // Create a <td> element and a text node, make the text
+            // node the contents of the <td>, and put the <td> at
+            // the end of the table row
+            var cell = document.createElement("td");
+            var cellText = document.createTextNode("cell in row " + i + ", column " + j);
+            cell.appendChild(cellText);
+            row.appendChild(cell);
+        }
+
+        // add the row to the end of the table body
+        tblBody.appendChild(row);
+    }
+
+    // put the <tbody> in the <table>
+    tbl.appendChild(tblBody);
+    // appends <table> into <body>
+    body.appendChild(tbl);
+    // sets the border attribute of tbl to 2;
+    return tbl;
+}
+
+function go(submitted) {
+    // if button is clicked change this to true, this will then hide DOM elements.
+    var is_submitted = true;
     // how many calories btn purely fills a box now, when go! is hit, this function is ran.
 
     // this doesnt do any calculations, it just prepares for the next stage.
-    calories=document.getElementById("calories").value
-    num_meals=document.getElementById("num_meals").value
+    calories = document.getElementById("calories").value
+    num_meals = document.getElementById("num_meals").value
 
-    if (calories == ""){
+    if (calories == "") {
         console.log('No calories specified');
         return null;
     }
@@ -152,5 +193,18 @@ function go(){
         console.log(data); // this will be a string
     });
     // return both uuid and result
-    return data;
+
+
+    if (is_submitted == "false") {
+        $("#calculation").show()
+        $("#meal_page").hide()
+    } else {
+        console.log(is_submitted);
+        $("#calculation").hide()
+        $("#banner").hide()
+        $("#meal_page").show()
+        document.getElementById("calories_span").innerHTML = calories;
+        document.getElementById("meal_table").innerHTML = generate_table(data);
+    }
+
 }
