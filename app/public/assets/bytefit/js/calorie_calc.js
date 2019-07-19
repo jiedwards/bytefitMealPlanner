@@ -113,39 +113,44 @@ function calculate() {
 }
 
 
-function generate_table() {
-  // get the reference for the body
-  var body = document.getElementsByTagName("body")[0];
+function generate_table(data) {
+    let uuid = data.uuid;
+    let calories = data.calories;
+    let num_meals = data.num_meals;
 
-  // creates a <table> element and a <tbody> element
-  var tbl = document.createElement("table");
-  var tblBody = document.createElement("tbody");
+    // get the reference for the body
+    var body = document.getElementsByTagName("body")[0];
 
-  // creating all cells
-  for (var i = 0; i < 2; i++) {
-    // creates a table row
-    var row = document.createElement("tr");
+    // creates a <table> element and a <tbo> element
+    var tbl = document.createElement("table");
+    tbl.className='table table-bordered table-striped text-center'
+    var tblBody = document.createElement("tbody");
 
-    for (var j = 0; j < 2; j++) {
-      // Create a <td> element and a text node, make the text
-      // node the contents of the <td>, and put the <td> at
-      // the end of the table row
-      var cell = document.createElement("td");
-      var cellText = document.createTextNode("cell in row "+i+", column "+j);
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
+    // creates table rows from the number of meals
+    for (var i = 0; i < num_meals; i++) {
+        var row = document.createElement("tr");
 
-    // add the row to the end of the table body
-    tblBody.appendChild(row);
-  }
+        // creates table rows (this should match up against macros or something)
+        for (var j = 0; j < 4; j++) {
+            // Create a <td> element and a text node, make the text
+            // node the contents of the <td>, and put the <td> at
+            // the end of the table row
+            var cell = document.createElement("td");
+            var cellText = document.createTextNode("cell in row " + i + ", column " + j);
+            cell.appendChild(cellText);
+            row.appendChild(cell);
+        }
 
-  // put the <tbody> in the <table>
-  tbl.appendChild(tblBody);
-  // appends <table> into <body>
-  body.appendChild(tbl);
-  // sets the border attribute of tbl to 2;
-  tbl.setAttribute("border", "2");
+        // add the row to the end of the table body
+        tblBody.appendChild(row);
+    }
+
+    // put the <tbody> in the <table>
+    tbl.appendChild(tblBody);
+    // appends <table> into <body>
+    body.appendChild(tbl);
+    // sets the border attribute of tbl to 2;
+    return tbl;
 }
 
 function go(submitted) {
@@ -192,14 +197,14 @@ function go(submitted) {
 
     if (is_submitted == "false") {
         $("#calculation").show()
-        $("#meal_table").hide()
+        $("#meal_page").hide()
     } else {
         console.log(is_submitted);
         $("#calculation").hide()
         $("#banner").hide()
-        $("#meal_table").show()
-        generate_table();
+        $("#meal_page").show()
         document.getElementById("calories_span").innerHTML = calories;
+        document.getElementById("meal_table").innerHTML = generate_table(data);
     }
 
 }

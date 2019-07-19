@@ -1,4 +1,4 @@
 function load(){
 	console.log('page loaded');
-	$("#meal_table").hide()
+	$("#meal_page").hide()
 }
