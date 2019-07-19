@@ -23,189 +23,195 @@
             </ul>
         </div>
     </nav>
-    <section class="jumbotron text-center">
+    <section class="jumbotron text-center" id="banner">
         <div class="container">
             <h1 class="jumbotron-heading">ByteFit</h1>
             <p class="lead text-muted">ByteFit, an application to find what to eat.</p>
     </section>
     <div class="container">
         <section id="calculation">
-        <div class="text-center">
-            <span>I want to eat <input id="calories" /> calories across
-                <select id="num_meals">
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                    <option selected value='4'>4</option>
-                    <option value='5'>5</option>
-                    <option value='6'>6</option>
-                    <option value='7'>7</option>
-                    <option value='8'>8</option>
-                    <option value='9'>9</option>
-                </select>
-                meals
-                <button value='false' type="button" class="btn btn-primary" onclick="go(this)" id="go">
-                    go!
-                </button></span>
-        </div>
-        <div>
-            </br>
             <div class="text-center">
-                <button type="button" class="btn-sm btn-success" data-toggle="modal" onclick="unitChoice(this)" data-target="#caloriescalc">
-                    How many calories do I need?
-                </button>
+                <span>I want to eat <input id="calories" value="1500" /> calories across
+                    <select id="num_meals">
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option selected value='4'>4</option>
+                        <option value='5'>5</option>
+                        <option value='6'>6</option>
+                        <option value='7'>7</option>
+                        <option value='8'>8</option>
+                        <option value='9'>9</option>
+                    </select>
+                    meals
+                    <button value='false' type="button" class="btn btn-primary" onclick="go(this)" id="go">
+                        go!
+                    </button></span>
             </div>
-            <div class="modal fade" id="caloriescalc" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Find out how many calories you should be eating</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container">
-                                My goal is to:
+            <div>
+                </br>
+                <div class="text-center">
+                    <button type="button" class="btn-sm btn-success" data-toggle="modal" onclick="unitChoice(this)" data-target="#caloriescalc">
+                        How many calories do I need?
+                    </button>
+                </div>
+                <div class="modal fade" id="caloriescalc" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Find out how many calories you should be eating</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    My goal is to:
+                                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-toggle="tooltip" data-placement="right" title="Some text">
+                                        <i class="fas fa-question-circle"></i>
+                                    </a>
+                                    <select id="endGoal" class="col-lg-8 dropdown-toggler">
+                                        <option value="0" selected="selected">Maintain Weight</option>
+                                        <option value="500">Lose Weight</option>
+                                        <option value="500">Gain Weight</option>
+                                    </select>
+                                    <fieldset class="form-group">
+                                        <div class="row">
+                                            <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                                            <div class="col-sm-10">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" onclick="profileTest(this)" name="gender" id="male" value="male">
+                                                    <label class="form-check-label" for="male">
+                                                        Male
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" onclick="profileTest(this)" name="gender" id="female" value="female">
+                                                    <label class="form-check-label" for="female">
+                                                        Female
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    Unit input
+                                    <fieldset class="form-group">
+                                        <div class="row">
+                                            <legend class="col-form-label col-sm-2 pt-0">Unit Input</legend>
+                                            <div class="col-sm-10">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" onclick="unitChoice(this)" name="unitType" id="imperial" value="imperial">
+                                                    <label class="form-check-label" for="imperial">
+                                                        Imperial
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" onclick="unitChoice(this)" name="unitType" id="metric" value="metric">
+                                                    <label class="form-check-label" for="metric">
+                                                        Metric
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div id="metricUnits">
+                                        <div class="form-group row">
+                                            <label for="height" class="col-sm-2 col-form-label">Height</label>
+                                            <div class="heightMetric col-sm-10">
+                                                <input type="text" class="form-control" id="metricHeight" placeholder="Height (in cm's)" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="weight" class="col-sm-2 col-form-label">Weight</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="metricWeight" placeholder="Weight (in kg's)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="imperialUnits">
+                                        <div class="row col-sm-10">
+                                            <label for="imperialHeightFt" class="col-sm-2 col-form-label">Height</label>
+                                            <select id="imperialHeightFt" class="col-sm-5 dropdown-toggler">
+                                                <option value="3">3 ft</option>
+                                                <option value="4">4 ft</option>
+                                                <option value="5" selected="selected">5 ft</option>
+                                                <option value="6">6 ft</option>
+                                                <option value="7">7 ft</option>
+                                            </select>
+                                            <select id="imperialHeightInch" class="col-sm-5 dropdown-toggler">
+                                                <option value="1">1 inch</option>
+                                                <option value="2">2 inches</option>
+                                                <option value="3" selected="selected">3 inches</option>
+                                                <option value="4">4 inches</option>
+                                                <option value="5">5 inches</option>
+                                                <option value="6">6 inches</option>
+                                                <option value="7">7 inches</option>
+                                                <option value="8">8 inches</option>
+                                                <option value="9">9 inches</option>
+                                                <option value="10">10 inches</option>
+                                                <option value="11">11 inches</option>
+                                                <option value="12">12 inches</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="weight" class="col-sm-2 col-form-label">Weight</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="imperialWeight" placeholder="Weight (in kg's)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="age" class="col-sm-2 col-form-label">Age</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="age" placeholder="21">
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                Input your activity level
                                 <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-toggle="tooltip" data-placement="right" title="Some text">
                                     <i class="fas fa-question-circle"></i>
                                 </a>
-                                <select id="endGoal" class="col-lg-8 dropdown-toggler">
-                                    <option value="0" selected="selected">Maintain Weight</option>
-                                    <option value="500">Lose Weight</option>
-                                    <option value="500">Gain Weight</option>
+                                <select id="activityLevel" class="col-lg-8 dropdown-toggler">
+                                    <option value="1.2">Sedentary</option>
+                                    <option value="1.375">Lightly Active</option>
+                                    <option value="1.55" selected="selected">Moderately Active</option>
+                                    <option value="1.725">Very Active</option>
+                                    <option value="1.9">Extremely Active</option>
                                 </select>
-                                <fieldset class="form-group">
-                                    <div class="row">
-                                        <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
-                                        <div class="col-sm-10">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" onclick="profileTest(this)" name="gender" id="male" value="male">
-                                                <label class="form-check-label" for="male">
-                                                    Male
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" onclick="profileTest(this)" name="gender" id="female" value="female">
-                                                <label class="form-check-label" for="female">
-                                                    Female
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                Unit input
-                                <fieldset class="form-group">
-                                    <div class="row">
-                                        <legend class="col-form-label col-sm-2 pt-0">Unit Input</legend>
-                                        <div class="col-sm-10">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" onclick="unitChoice(this)" name="unitType" id="imperial" value="imperial">
-                                                <label class="form-check-label" for="imperial">
-                                                    Imperial
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" onclick="unitChoice(this)" name="unitType" id="metric" value="metric">
-                                                <label class="form-check-label" for="metric">
-                                                    Metric
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <div id="metricUnits">
-                                    <div class="form-group row">
-                                        <label for="height" class="col-sm-2 col-form-label">Height</label>
-                                        <div class="heightMetric col-sm-10">
-                                            <input type="text" class="form-control" id="metricHeight" placeholder="Height (in cm's)" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="weight" class="col-sm-2 col-form-label">Weight</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="metricWeight" placeholder="Weight (in kg's)">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="imperialUnits">
-                                    <div class="row col-sm-10">
-                                        <label for="imperialHeightFt" class="col-sm-2 col-form-label">Height</label>
-                                        <select id="imperialHeightFt" class="col-sm-5 dropdown-toggler">
-                                            <option value="3">3 ft</option>
-                                            <option value="4">4 ft</option>
-                                            <option value="5" selected="selected">5 ft</option>
-                                            <option value="6">6 ft</option>
-                                            <option value="7">7 ft</option>
-                                        </select>
-                                        <select id="imperialHeightInch" class="col-sm-5 dropdown-toggler">
-                                            <option value="1">1 inch</option>
-                                            <option value="2">2 inches</option>
-                                            <option value="3" selected="selected">3 inches</option>
-                                            <option value="4">4 inches</option>
-                                            <option value="5">5 inches</option>
-                                            <option value="6">6 inches</option>
-                                            <option value="7">7 inches</option>
-                                            <option value="8">8 inches</option>
-                                            <option value="9">9 inches</option>
-                                            <option value="10">10 inches</option>
-                                            <option value="11">11 inches</option>
-                                            <option value="12">12 inches</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="weight" class="col-sm-2 col-form-label">Weight</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="imperialWeight" placeholder="Weight (in kg's)">
-                                        </div>
-                                    </div>
-                                </div>
+                                <br>
+                                <br>
+                                <button onclick="calculate()" class="btn btn-primary">Get my results!</button>
+                                <br>
+                                <p id="answer"></p>
                             </div>
-                            <div class="form-group row">
-                                <label for="age" class="col-sm-2 col-form-label">Age</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="age" placeholder="21">
-                                </div>
-                            </div>
-                            <br>
-                            <br>
-                            Input your activity level
-                            <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-toggle="tooltip" data-placement="right" title="Some text">
-                                <i class="fas fa-question-circle"></i>
-                            </a>
-                            <select id="activityLevel" class="col-lg-8 dropdown-toggler">
-                                <option value="1.2">Sedentary</option>
-                                <option value="1.375">Lightly Active</option>
-                                <option value="1.55" selected="selected">Moderately Active</option>
-                                <option value="1.725">Very Active</option>
-                                <option value="1.9">Extremely Active</option>
-                            </select>
-                            <br>
-                            <br>
-                            <button onclick="calculate()" class="btn btn-primary">Get my results!</button>
-                            <br>
-                            <p id="answer"></p>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
     <section>
-    </div>
-    <!-- ByteFit Code -->
-    <script src="assets/bytefit/js/calorie_calc.js"></script>
-    <script src="assets/bytefit/js/pageload.js"></script>
-    <script src="assets/bytefit/js/meals.js"></script>
-    <script src="assets/bytefit/js/widget.js"></script>
-    <!-- Third-party Code -->
-    <script src="assets/thirdparty/jquery/jquery.js"></script>
-    <script src="assets/thirdparty/popper/popper.js"></script>
-    <script src="assets/thirdparty/bootstrap/js/bootstrap.js"></script>
-    <script src="assets/thirdparty/fontawesome/all.js"></script>
+        <section id="meal_table">
+            <div class="container">
+                <p><span>Your calories</span> are <span id="calories_span"></span></p>
+            </div>
+            <div id="content"></div>
+        </section>
+        </div>
+        <!-- ByteFit Code -->
+        <script src="assets/bytefit/js/calorie_calc.js"></script>
+        <script src="assets/bytefit/js/pageload.js"></script>
+        <script src="assets/bytefit/js/meals.js"></script>
+        <script src="assets/bytefit/js/widget.js"></script>
+        <!-- Third-party Code -->
+        <script src="assets/thirdparty/jquery/jquery.js"></script>
+        <script src="assets/thirdparty/popper/popper.js"></script>
+        <script src="assets/thirdparty/bootstrap/js/bootstrap.js"></script>
+        <script src="assets/thirdparty/fontawesome/all.js"></script>
 </body>
 
 </html>

@@ -7,7 +7,6 @@ document.getElementById('metricUnits').style.display = 'none';
 document.getElementById('imperialUnits').style.display = 'none';
 
 
-
 (function() {
     ('[data-toggle="tooltip"]').tooltip();
 });
@@ -114,10 +113,44 @@ function calculate() {
 }
 
 
+function generate_table() {
+  // get the reference for the body
+  var body = document.getElementsByTagName("body")[0];
+
+  // creates a <table> element and a <tbody> element
+  var tbl = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // creating all cells
+  for (var i = 0; i < 2; i++) {
+    // creates a table row
+    var row = document.createElement("tr");
+
+    for (var j = 0; j < 2; j++) {
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+      var cell = document.createElement("td");
+      var cellText = document.createTextNode("cell in row "+i+", column "+j);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+    }
+
+    // add the row to the end of the table body
+    tblBody.appendChild(row);
+  }
+
+  // put the <tbody> in the <table>
+  tbl.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tbl);
+  // sets the border attribute of tbl to 2;
+  tbl.setAttribute("border", "2");
+}
+
 function go(submitted) {
     // if button is clicked change this to true, this will then hide DOM elements.
     var is_submitted = true;
-
     // how many calories btn purely fills a box now, when go! is hit, this function is ran.
 
     // this doesnt do any calculations, it just prepares for the next stage.
@@ -158,11 +191,15 @@ function go(submitted) {
 
 
     if (is_submitted == "false") {
-        console.log(is_submitted);
         $("#calculation").show()
+        $("#meal_table").hide()
     } else {
         console.log(is_submitted);
         $("#calculation").hide()
+        $("#banner").hide()
+        $("#meal_table").show()
+        generate_table();
+        document.getElementById("calories_span").innerHTML = calories;
     }
 
 }
