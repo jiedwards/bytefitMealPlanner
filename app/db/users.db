@@ -198,6 +198,7 @@
 {"uuid":"e9952338-00fd-4562-a954-a847d74a4d79","result":1,"timestamp":1563488280574,"_id":"f0W8jdt1bmmKotiQ"}
 {"uuid":"89e15c06-0ce3-4a5a-b332-1325f2988d67","result":null,"timestamp":1563482863880,"_id":"fbDlflsBFryV9dS8"}
 {"uuid":"d4ee5c76-e992-40f8-8205-60e0febccfcf","result":0,"timestamp":1563485340144,"_id":"fu26RHcGhZJoguJA"}
+{"uuid":"2c9d0c3c-7852-4d5d-b5c8-1525c92e05a1","calories":"1500","num_meals":"4","timestamp":1563546770647,"_id":"g1yByPgUqnU41WIL"}
 {"uuid":"9a1e99f8-e518-41fd-8171-7fe43bf1f11e","result":3288,"timestamp":1563468675636,"_id":"g2muGZWGSTEzYYmY"}
 {"uuid":"b70dc245-e3fb-446e-837d-4b0f7f0e851d","result":2527,"timestamp":1563397325153,"_id":"g7IEipVZjKe65lmD"}
 {"uuid":"f28fccc8-d83e-4f4b-90da-2e20e9e9302b","calories":"1500","num_meals":"4","timestamp":1563541964405,"_id":"gHYCJImynJSQK3Hh"}
@@ -298,4 +299,11 @@
 {"uuid":"381cf4c0-7998-4d65-ae93-5df57301b41f","result":null,"timestamp":1563476630861,"_id":"z1cssiIHvWTqhd22"}
 {"uuid":"43bfe20b-0ad9-4358-89eb-b521a2e7461d","result":null,"timestamp":1563489519794,"_id":"zkOdxo2AmM8SqGGO"}
 {"uuid":"0416df60-f11a-4378-9ce5-029f0269adc3","calories":"1500","num_meals":"4","timestamp":1563541317688,"_id":"zwu4vt0txLHrgNog"}
-{"uuid":"2c9d0c3c-7852-4d5d-b5c8-1525c92e05a1","calories":"1500","num_meals":"4","timestamp":1563546770647,"_id":"g1yByPgUqnU41WIL"}
+{"uuid":"882ff5bb-a763-4b74-91bd-2a13e8b7edc2","calories":"1500","num_meals":"4","timestamp":1563551188998,"_id":"4ei5nud4ubzMtMld"}
+{"uuid":"3d06c651-3d3a-4781-96e9-731fe6893eae","calories":"1351","num_meals":"4","timestamp":1563551236037,"_id":"l1hQA1xxafsKLgEi"}
+{"uuid":"fbb3bb58-d92e-45b4-add1-086d373c7aee","calories":"1500","num_meals":"8","timestamp":1563551241166,"_id":"lYcfcZSbo5rVJ38i"}
+{"uuid":"442fe304-cc65-41eb-abf5-27146e5c9afe","calories":"1500","num_meals":"4","timestamp":1563552268580,"_id":"af7BW3VclWd7RcuK"}
+{"uuid":"bcbdf522-18ff-4fb1-be2f-6c3d7367c68f","calories":"1500","num_meals":"8","timestamp":1563552752683,"_id":"h7HM3JMIpC6WAyRg"}
+{"uuid":"7a9910ac-0544-46e7-a9b0-c8cb6e143f13","calories":"1500","num_meals":"4","timestamp":1563552821603,"_id":"5yQxv1jqfzPKDXTs"}
+{"uuid":"44596b19-0675-4535-962e-c0cc1434b2b2","calories":"NaN","num_meals":"4","timestamp":1563555064431,"_id":"TYuQI7Pj3DVGngrv"}
+{"uuid":"7ef461c9-3b38-40ee-98e4-42ec13ee6ea0","calories":"1500","num_meals":"4","timestamp":1563555071404,"_id":"5Ogn87ZtcyQbo7s9"}

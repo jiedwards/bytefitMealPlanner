@@ -7,13 +7,13 @@ document.getElementById('metricUnits').style.display = 'none';
 document.getElementById('imperialUnits').style.display = 'none';
 
 
-(function() {
+(function () {
     ('[data-toggle="tooltip"]').tooltip();
 });
 
 // UUID generation function. In time, this will be replaced with a cookie to identify the user. 
 function uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         var r = Math.random() * 16 | 0,
             v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
@@ -38,13 +38,29 @@ function unitChoice(choice) {
 
     if (choice.value == "imperial") {
         unitConf = choice.value;
-        $("#metricUnits").hide()
-        $("#imperialUnits").show()
+        $("#metricUnits").hide();
+        document.getElementById("imperialWeight").value = Math.round((document.getElementById("metricWeight").value * 2.2));
+        $("#imperialUnits").show();
     } else if (choice.value == "metric") {
         unitConf = choice.value;
+        document.getElementById("metricWeight").value = Math.round((document.getElementById("imperialWeight").value / 2.2));
+
         $("#imperialUnits").hide()
         $("#metricUnits").show()
     }
+}
+
+function moreInfo(choice) {
+
+    tippy('#goalTooltip', {
+        placement: 'right',
+        content: "Will add relevant info here soon",
+    })
+
+    tippy('#activityTooltip', {
+        placement: 'right',
+        content: "Will add relevant info here soon",
+    })
 }
 
 function calculate() {
@@ -61,7 +77,7 @@ function calculate() {
             activityLevel = radios[i].value;
         }
     }
-    //RETURN HERE AND FIGURE OUT CALCULATION FROM FT + IN into single value, readable only when dropdown has selected imperial/metric
+    //figures out which unit type is being used, then it sets the appropriate values to do the calculation.
     if (unitConf == "imperial") {
 
         var imperialHeightFt = document.getElementById("imperialHeightFt");
@@ -79,7 +95,7 @@ function calculate() {
         heightMultiplier = 6.25;
         weightMultiplier = 10;
     }
-
+    //calculation for end calorie result, it's dependent on gender + user's goal.
     if (gender == "male") {
         if (endGoalText == "Lose Weight") {
             var result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) + 5) * activityLevel) - parseInt(endGoal.value));
@@ -88,12 +104,6 @@ function calculate() {
         } else if (endGoalText == "Maintain Weight") {
             var result = (((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) + 5) * activityLevel);
         }
-        // console.log("TEST" + endGoalText);
-
-        // console.log(endGoal + "test" + endGoal.value + "test" + endGoal.text)
-        // console.log("LEVEL : BOOM " + activityLevel)
-        // console.log("LEVEL : goal " + endGoal)
-        // var result = (((10 * parseFloat(weight)) + (6.25 * parseFloat(height)) - (5 * age) + 5) * activityLevel) + endGoal || - endGoal;
     } else if (gender == "female") {
         if (endGoalText == "Lose Weight") {
             var result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) - 161) * activityLevel) - endGoal.value);
@@ -106,8 +116,16 @@ function calculate() {
     }
 
     result = Math.round(result);
+    var carbs = Math.round((result * 0.5) / 4);
+    var fats = Math.round((result * 0.3) / 4);
+    var proteins = Math.round((result * 0.2) / 9);
     // Write the result to the screen
     document.getElementById("answer").innerHTML = "Your expected calorie intake (daily) is: " + result;
+    document.getElementById("macros").innerHTML = "A balanced macronutrient ratio for you would be: " +
+        "Carbs: " + carbs + "g " +
+        "Protein: " + proteins + "g " +
+        "Fats: " + fats + "g ";
+
     document.getElementById("calories").value = result;
     return result;
 }
@@ -123,7 +141,7 @@ function generate_table(data) {
 
     // creates a <table> element and a <tbo> element
     var tbl = document.createElement("table");
-    tbl.className='table table-bordered table-striped text-center'
+    tbl.className = 'table table-bordered table-striped text-center'
     var tblBody = document.createElement("tbody");
 
     // creates table rows from the number of meals
@@ -187,9 +205,9 @@ function go(submitted) {
     // send a POST request to /api in index.js, the data can then be parsed serverside (added to db). 
     // the server will respond purely by reflecting the data which is good for debugging, but probably going to be deleted eventually.
     // .then down top the console log can go tbf
-    fetch('/api', options).then(function(response) {
+    fetch('/api', options).then(function (response) {
         return response.text();
-    }).then(function(data) {
+    }).then(function (data) {
         console.log(data); // this will be a string
     });
     // return both uuid and result
