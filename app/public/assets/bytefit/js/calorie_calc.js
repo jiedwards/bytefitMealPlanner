@@ -2,6 +2,7 @@ var gender;
 var unitConf = "imperial";
 var weightMultiplier;
 var heightMultiplier;
+var result;
 
 document.getElementById('metricUnits').style.display = 'none';
 document.getElementById('imperialUnits').style.display = 'none';
@@ -54,12 +55,12 @@ function moreInfo(choice) {
 
     tippy('#goalTooltip', {
         placement: 'right',
-        content: "Will add relevant info here soon",
+        content: "Why we need this data? <p>If <u>lose weight</u> is chosen, a calorie defecit of 500 calories is applied with the aim to lose 1lb per week</p><p>If <u>gain weight</u> is chosen, a calorie surplus of 500 calories is applied with the aim to gain 1lb per week</p> <p>If <u>maintain weight</u> is chosen, no calorie defecit/surplus is applied</p>",
     })
 
     tippy('#activityTooltip', {
         placement: 'right',
-        content: "Will add relevant info here soon",
+        content: "Why we need this data? <p>To provide you with an accurate calorie reading, it's important to know how active you are on a daily basis as this factor contributes to your daily calorie allowance.</p> <p><u>Sedentary</u>: Very little exercise weekly </p> <p><u>Lightly Active</u>: Light Exercise: 1-3 days per week </p> <p><u>Moderately Active</u>: A good amount of exercise, 5-7 times per week </p> <p><u>Very Active</u>: Hard Exercise Daily: 2x's per day </p> <p><u>Extremely Active</u>: Hard Exercise: Twice or more daily, marathon training, triathalon etc. </p>",
     })
 }
 
@@ -98,36 +99,49 @@ function calculate() {
     //calculation for end calorie result, it's dependent on gender + user's goal.
     if (gender == "male") {
         if (endGoalText == "Lose Weight") {
-            var result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) + 5) * activityLevel) - parseInt(endGoal.value));
+            result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) + 5) * activityLevel) - parseInt(endGoal.value));
         } else if (endGoalText == "Gain Weight") {
-            var result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) + 5) * activityLevel)) + parseInt(endGoal.value);
+            result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) + 5) * activityLevel)) + parseInt(endGoal.value);
         } else if (endGoalText == "Maintain Weight") {
-            var result = (((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) + 5) * activityLevel);
+            result = (((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) + 5) * activityLevel);
         }
     } else if (gender == "female") {
         if (endGoalText == "Lose Weight") {
-            var result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) - 161) * activityLevel) - endGoal.value);
+            result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) - 161) * activityLevel) - parseInt(endGoal.value));
         } else if (endGoalText == "Gain Weight") {
-            var result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) - 161) * activityLevel) + endGoal.value);
+            result = ((((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) - 161) * activityLevel) + parseInt(endGoal.value));
         } else if (endGoalText == "Maintain Weight") {
-            var result = (((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) - 161) * activityLevel);
+            result = (((weightMultiplier * parseFloat(weight)) + (heightMultiplier * parseFloat(height)) - (5 * age) - 161) * activityLevel);
         }
 
     }
 
+    //total result and macros calculation
     result = Math.round(result);
     var carbs = Math.round((result * 0.5) / 4);
     var fats = Math.round((result * 0.3) / 4);
     var proteins = Math.round((result * 0.2) / 9);
     // Write the result to the screen
-    document.getElementById("answer").innerHTML = "Your expected calorie intake (daily) is: " + result;
-    document.getElementById("macros").innerHTML = "A balanced macronutrient ratio for you would be: " +
-        "Carbs: " + carbs + "g " +
-        "Protein: " + proteins + "g " +
-        "Fats: " + fats + "g ";
+ 
 
     document.getElementById("calories").value = result;
+
+//checks to see if result is valid, if no then it prints an error message, and sets the manual calorie box to default.
+    if (isNaN(result)){
+        document.getElementById("answer").innerHTML = "You have not filled in the form correctly, please try again!";
+        document.getElementById("calories").value = 2000;
+
+    }
+    //if yes then it prints cal's and macros
+    else {
+        document.getElementById("answer").innerHTML = "Your expected calorie intake (daily) is: " + result;
+        document.getElementById("macros").innerHTML = "A balanced macronutrient ratio for you would be: " +
+            "Carbs: " + carbs + "g " +
+            "Protein: " + proteins + "g " +
+            "Fats: " + fats + "g ";
+    }
     return result;
+
 }
 
 
