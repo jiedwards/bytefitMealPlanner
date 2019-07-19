@@ -3,13 +3,13 @@ var unitConf = "imperial";
 var weightMultiplier;
 var heightMultiplier;
 
-document.getElementById('metricUnits').style.display='none';
-document.getElementById('imperialUnits').style.display='none';
+document.getElementById('metricUnits').style.display = 'none';
+document.getElementById('imperialUnits').style.display = 'none';
 
 
 
 (function() {
-    ('[data-toggle="tooltip"]').tooltip();   
+    ('[data-toggle="tooltip"]').tooltip();
 });
 
 // UUID generation function. In time, this will be replaced with a cookie to identify the user. 
@@ -46,11 +46,11 @@ function unitChoice(choice) {
         $("#imperialUnits").hide()
         $("#metricUnits").show()
     }
-    }
+}
 
 function calculate() {
     //heavy lifting!
-    
+
     var age = document.getElementById("age").value;
     var activityLevel = document.getElementById("activityLevel");
     activityLevel = activityLevel.options[activityLevel.selectedIndex].value;
@@ -62,19 +62,19 @@ function calculate() {
             activityLevel = radios[i].value;
         }
     }
-//RETURN HERE AND FIGURE OUT CALCULATION FROM FT + IN into single value, readable only when dropdown has selected imperial/metric
-    if(unitConf=="imperial"){
+    //RETURN HERE AND FIGURE OUT CALCULATION FROM FT + IN into single value, readable only when dropdown has selected imperial/metric
+    if (unitConf == "imperial") {
 
-    var imperialHeightFt = document.getElementById("imperialHeightFt");
-    var imperialHeightFtUnit = imperialHeightFt.options[imperialHeightFt.selectedIndex].value;
-    var imperialHeightInch = document.getElementById("imperialHeightInch");
-    var imperialHeightInchUnit = imperialHeightInch.options[imperialHeightInch.selectedIndex].value;
+        var imperialHeightFt = document.getElementById("imperialHeightFt");
+        var imperialHeightFtUnit = imperialHeightFt.options[imperialHeightFt.selectedIndex].value;
+        var imperialHeightInch = document.getElementById("imperialHeightInch");
+        var imperialHeightInchUnit = imperialHeightInch.options[imperialHeightInch.selectedIndex].value;
 
         height = (((imperialHeightFtUnit) * 12) + parseInt(imperialHeightInchUnit));
         weight = document.getElementById("imperialWeight").value;
         heightMultiplier = 15.88;
         weightMultiplier = 4.536;
-    }else if(unitConf=="metric"){
+    } else if (unitConf == "metric") {
         height = document.getElementById("metricHeight").value;
         weight = document.getElementById("metricWeight").value;
         heightMultiplier = 6.25;
@@ -106,7 +106,7 @@ function calculate() {
 
     }
 
-    result=Math.round(result);
+    result = Math.round(result);
     // Write the result to the screen
     document.getElementById("answer").innerHTML = "Your expected calorie intake (daily) is: " + result;
     document.getElementById("calories").value = result;
@@ -114,14 +114,17 @@ function calculate() {
 }
 
 
-function go(){
+function go(submitted) {
+    // if button is clicked change this to true, this will then hide DOM elements.
+    var is_submitted = true;
+
     // how many calories btn purely fills a box now, when go! is hit, this function is ran.
 
     // this doesnt do any calculations, it just prepares for the next stage.
-    calories=document.getElementById("calories").value
-    num_meals=document.getElementById("num_meals").value
+    calories = document.getElementById("calories").value
+    num_meals = document.getElementById("num_meals").value
 
-    if (calories == ""){
+    if (calories == "") {
         console.log('No calories specified');
         return null;
     }
@@ -152,5 +155,14 @@ function go(){
         console.log(data); // this will be a string
     });
     // return both uuid and result
-    return data;
+
+
+    if (is_submitted == "false") {
+        console.log(is_submitted);
+        $("#calculation").show()
+    } else {
+        console.log(is_submitted);
+        $("#calculation").hide()
+    }
+
 }

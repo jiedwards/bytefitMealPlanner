@@ -19,6 +19,7 @@
 {"uuid":"2c25c2bd-e8f0-48d2-90ab-e40bc49579b4","result":null,"timestamp":1563480733447,"_id":"5nfNieyPLr5key8a"}
 {"uuid":"99e6cf90-451f-4f45-94b3-d82035c71796","result":1914,"timestamp":1563481661313,"_id":"5sQSn6p1GD5on5xg"}
 {"uuid":"19d03ac2-8412-40af-9464-efd7545707f8","result":null,"timestamp":1563489270931,"_id":"5ux4iO1VCP3IHOp9"}
+{"uuid":"56832d77-3e4e-411c-9fed-5e0d7020fba7","calories":"150","num_meals":"4","timestamp":1563536897578,"_id":"65cGOb9VfcYSjnWz"}
 {"uuid":"451da523-8a1d-4b7e-9bcb-d6be7e4ac7f2","result":626,"timestamp":1563486001501,"_id":"6A6XX0bn3CAMQLqa"}
 {"uuid":"8ef09abe-123d-4b62-9b28-4d9a0c5ecd92","result":1,"timestamp":1563488190227,"_id":"6CJqOdzu1BnSz7Jc"}
 {"uuid":"a12067f5-0eef-4b4b-ad66-b7975156f19a","result":2527,"timestamp":1563397420292,"_id":"7L9qlWqzJyE55rkE"}
@@ -31,6 +32,7 @@
 {"uuid":"f11acd68-0993-4f08-95b3-168babf2d01b","result":0,"timestamp":1563486064772,"_id":"8n97FWEFfiJXiWeR"}
 {"uuid":"cebdc0d6-c3a8-47c3-a470-c6993a6bda0d","result":null,"timestamp":1563474849189,"_id":"93ehlbk8OpiBlQRY"}
 {"uuid":"d3c6adc3-24de-46b4-8b3c-25858feedee4","result":null,"timestamp":1563473380273,"_id":"93wxMvfXExVSbe5l"}
+{"uuid":"02b1704d-19f3-4b3d-a591-a5a201a06c7e","calories":"100","num_meals":"4","timestamp":1563537174541,"_id":"9Cc6582euPojgU0u"}
 {"uuid":"d3633c20-762f-40d2-8805-13f850cdf208","result":null,"timestamp":1563484969474,"_id":"9IDrEgCyfTKqia65"}
 {"uuid":"99c8affa-6b49-481f-b317-287c702337a9","result":null,"timestamp":1563476810649,"_id":"9IufNCAvhYjxFZTh"}
 {"uuid":"d08a2fc6-5563-46af-a35f-39bc1f9f9b95","timestamp":1563484873847,"_id":"9a5s1Ix9VDiRosCa"}
@@ -48,6 +50,7 @@
 {"uuid":"e1c1ab17-0a3d-4bf9-ab9f-69ca22591e5d","result":2613,"timestamp":1563489178115,"_id":"DcCnF9QKVkoGHDTV"}
 {"uuid":"4c58a238-79d6-4060-ac00-78976cb4e767","result":null,"timestamp":1563484931438,"_id":"DkJIhmikqKABzqzE"}
 {"uuid":"c527e60d-9fdd-4c69-a729-0d3e2e545d46","result":1,"timestamp":1563488253497,"_id":"DncwcCtyzKBaBdbB"}
+{"uuid":"91317e86-f506-4783-afd6-8ba82a6f2bc1","calories":"100","num_meals":"4","timestamp":1563536809123,"_id":"DrmFB1BL0r1jrsfV"}
 {"uuid":"784e6d28-9c30-4e4a-b4db-18e0774c4963","result":null,"timestamp":1563484281029,"_id":"Ex8PhmasBvXvmclL"}
 {"uuid":"7b919e8b-7b7c-49fa-853c-8b2ac02459b9","result":0,"timestamp":1563485133403,"_id":"FEgKVWh69Zj6G196"}
 {"uuid":"0de45778-5311-4bea-8815-31c8df09f3ec","result":1,"timestamp":1563488281089,"_id":"FQ0L6e4VdbBE8XIE"}
@@ -61,6 +64,7 @@
 {"uuid":"dedf141e-e686-464d-8957-4a90f89e0560","result":3102,"timestamp":1563469389525,"_id":"HXD3j1eFPQ0LQXM6"}
 {"uuid":"d0fb0241-d24e-4afe-8acd-d4a80f1ed1e6","result":2527,"timestamp":1563398780196,"_id":"IFsl53FEWUPXc9R7"}
 {"uuid":"b5c08930-7081-49f6-b0f0-684661c764f5","timestamp":1563484360150,"_id":"IQcMlYu1pcgFBpN5"}
+{"uuid":"02b8b4a3-8f26-4780-ad1a-eb97c97ee4a0","calories":"100","num_meals":"4","timestamp":1563537100645,"_id":"IftpMSZkCxWl3CxU"}
 {"uuid":"145a1f39-2896-4a07-959a-88f0f1093433","calories":"","timestamp":1563490070171,"_id":"J63K3965FHEn1Zw5"}
 {"uuid":"2f53ca18-f825-4634-8905-4923c21a918d","result":null,"timestamp":1563399106264,"_id":"JNynYJrlFSubaGoc"}
 {"uuid":"6512f2c5-ff98-4039-90d2-7f2660e9a723","result":null,"timestamp":1563484200746,"_id":"JWhC67SvwdFsrM2d"}
@@ -92,11 +96,13 @@
 {"uuid":"ef7ad8b1-06f1-40ef-bd3b-a9037bcb0040","result":0,"timestamp":1563486441451,"_id":"QQJ7mygol0rniWw4"}
 {"uuid":"a6ba1708-b278-49f9-8199-344c3e3b9646","result":1,"timestamp":1563488332021,"_id":"QYVrWEHNGAG1dzlE"}
 {"uuid":"492fcec6-ba48-4b2e-9545-b46daa955ac4","result":null,"timestamp":1563488528392,"_id":"Qi8DRTqSvz1xDPyO"}
+{"uuid":"d349e325-d372-4c4f-91f6-531854673c05","calories":"100","num_meals":"4","timestamp":1563536773386,"_id":"SRbnLP9ReWjSZLym"}
 {"uuid":"df772f80-1559-465b-9aaa-ebf02abab6a5","calories":"2862","timestamp":1563490098062,"_id":"ST5HrKah85VtjeAE"}
 {"uuid":"5e2dc935-ea5f-4e15-bfd2-1b0d9ceb4aa1","result":1,"timestamp":1563488280884,"_id":"SVg6lfbJQBXx7AMa"}
 {"uuid":"126c8fb1-f5b7-40e3-8070-5e3062aa61e8","result":1,"timestamp":1563488591804,"_id":"SmhHBJ5Lj0OhSIaW"}
 {"uuid":"1e3ae2bb-8699-4741-99de-3cad646be211","result":2254,"timestamp":1563483297875,"_id":"Sr4LIrrkpZBT0Tbq"}
 {"uuid":"93cf9159-e5dc-4a56-858b-a4ed63db2777","result":1,"timestamp":1563488365847,"_id":"TDsqX561XwhDUqjQ"}
+{"uuid":"46900e59-0f2b-4af4-a619-1ae157309727","calories":"100","num_meals":"4","timestamp":1563537136637,"_id":"TNc2LLEaqCABGGTN"}
 {"uuid":"7a1e978a-7426-4c9b-afc4-b552e3285607","result":null,"timestamp":1563488289178,"_id":"TZNNnPKKDdkv670M"}
 {"uuid":"3aec8de3-11a2-4cc9-b8e3-3303b03eadc7","result":null,"timestamp":1563482645180,"_id":"Ts6GgVGVHDwtCRiv"}
 {"uuid":"cbd2a0b1-8bee-4f93-8649-9a6aff0d1996","result":2527,"timestamp":1563398324716,"_id":"TyNXB7ZOARKdocxY"}
@@ -110,6 +116,7 @@
 {"uuid":"7312d8a8-801a-4a87-a110-c5a913ff28bb","result":null,"timestamp":1563484945817,"_id":"Vkmyu2SiFJQgO707"}
 {"uuid":"6a779bfa-f32c-4d98-b3d7-ea2217cf6b58","result":null,"timestamp":1563485047503,"_id":"VvINDt8DCv2ro67u"}
 {"uuid":"9ca7206f-ee91-43b1-a089-d5ece2d73ec4","timestamp":1563484468082,"_id":"W4kb9WenckRp3gDu"}
+{"uuid":"0731a626-eeeb-4091-98b0-4500e58a9def","calories":"150","num_meals":"4","timestamp":1563536894400,"_id":"W7ESf3gyKQ1GDC5S"}
 {"uuid":"b00e764f-857d-43bf-82df-34de9920fb6b","result":null,"timestamp":1563488289010,"_id":"WPtCgtwBlB4JOnYd"}
 {"uuid":"2e7a1c34-ded2-40db-a352-4b6e02e8cd12","result":2602,"timestamp":1563471035020,"_id":"WX5f3yrWa7jEVKog"}
 {"uuid":"c793551b-3098-49a4-9b6a-acd94af58009","result":3104,"timestamp":1563483209352,"_id":"WqNqXnLPwSvnJeBT"}
@@ -119,8 +126,10 @@
 {"uuid":"ad08d07d-9f84-4e2b-9574-5149599e2d1b","result":null,"timestamp":1563484228207,"_id":"ZB1xU2lD3TUelnqT"}
 {"uuid":"7275ac65-0b74-4b0e-a5e1-1473d9f997f5","result":2107,"timestamp":1563483692491,"_id":"ZBOATJ3mVtiDLkW5"}
 {"uuid":"a9922ad3-6daf-47d4-8fed-104f1bda2807","result":4803,"timestamp":1563483722142,"_id":"ZSpLhfdbBGdfjZ8k"}
+{"uuid":"6745725a-193c-4fb5-af2d-a5dfb25c4579","calories":"150","num_meals":"4","timestamp":1563536897854,"_id":"ZsnzeUEiA2Ieel1G"}
 {"uuid":"798a2a0c-dc02-4880-81ba-db6e9358a88a","result":2602,"timestamp":1563469396687,"_id":"ZygYtWlilFwvTywz"}
 {"uuid":"fd41cfb9-ae08-4913-aecb-b1ea1076a3c0","timestamp":1563484711127,"_id":"a8ehGlTwaBvFesqL"}
+{"uuid":"bcaa3e85-1eb6-4806-ab04-d2e5ada057f9","calories":"100","num_meals":"4","timestamp":1563536879782,"_id":"aB6qA4ldXrV50uus"}
 {"uuid":"999acb19-0b27-470b-aa07-9dc08e9e93de","result":null,"timestamp":1563476197304,"_id":"aTPGrfZyKp6XAxcw"}
 {"uuid":"b3ce133e-5634-4c74-b48c-7261838d1085","calories":"100","timestamp":1563490081066,"_id":"aU00yyITeFS8YbHQ"}
 {"uuid":"7406f145-477f-4901-9480-e308f482f18e","result":0,"timestamp":1563485743455,"_id":"aZSv9k4DWgRHLUdV"}
@@ -129,6 +138,7 @@
 {"uuid":"af676f89-42b9-4567-80c5-395c51e607c2","result":null,"timestamp":1563484045335,"_id":"bM63PqBbVJJcZ6D8"}
 {"uuid":"77a5aaea-d0d6-4abe-81b2-a7a9daf2f1a1","result":426,"timestamp":1563473291987,"_id":"bYRypSSU0AJm8Cq3"}
 {"uuid":"2a55811a-f6cd-4e20-bbc0-bf1456debb30","result":0,"timestamp":1563486731102,"_id":"bwlBJbUG5qe3ys5H"}
+{"uuid":"1694980e-7ec3-4b82-8994-1d13f03b7da6","calories":"100","num_meals":"4","timestamp":1563536820756,"_id":"cc8d62ZEnuJQHhAN"}
 {"uuid":"9a26f485-d6f7-49d5-aaff-0076b4f40991","result":null,"timestamp":1563483069836,"_id":"cpJNPTchfPViBegb"}
 {"uuid":"3e2fe5c5-c07a-489b-a509-40664dac197d","result":null,"timestamp":1563483116012,"_id":"dL4TZJa8tmMvWWMY"}
 {"uuid":"e23c6a46-504a-47d3-9913-7d971637c63d","result":1,"timestamp":1563488190757,"_id":"dh3MyPv6E0rdSQm7"}
@@ -168,6 +178,7 @@
 {"uuid":"6fbcfb8b-3834-4f1a-89d5-eb02a7ba1258","result":3102,"timestamp":1563478753512,"_id":"lCJZGTM36dMHvcAW"}
 {"uuid":"1f85c726-f49c-4581-a722-0421ff57f91d","result":1,"timestamp":1563488500213,"_id":"lS0j4eo3QPwlxZW6"}
 {"uuid":"81c523d0-efbc-438c-aa06-d433dc865555","result":100,"timestamp":1563487564851,"_id":"mEyRUezpmsjvwwiH"}
+{"uuid":"e64bd786-f642-4b42-87af-071b498741d7","calories":"11111111","num_meals":"4","timestamp":1563490444487,"_id":"mOZZ8KGqlDbAJiFN"}
 {"uuid":"f4cca015-62f6-4d30-a299-622588fe30f1","result":3102,"timestamp":1563474937187,"_id":"mTSqpflt3aKittIW"}
 {"uuid":"a07bbe74-af64-4cf2-aa67-f3bcc9abb744","result":16089,"timestamp":1563398989908,"_id":"meAWrcNkEMF5DpY6"}
 {"uuid":"ada7dd19-0441-479d-b2c4-c8cbbe93b749","result":null,"timestamp":1563488329619,"_id":"mhGWCmTTRbDL3msu"}
@@ -223,4 +234,7 @@
 {"uuid":"2ed41ffc-9e0a-4e9e-b3d6-83f682e656c6","result":0,"timestamp":1563486271374,"_id":"ywvM4nmlMbS28Gk5"}
 {"uuid":"381cf4c0-7998-4d65-ae93-5df57301b41f","result":null,"timestamp":1563476630861,"_id":"z1cssiIHvWTqhd22"}
 {"uuid":"43bfe20b-0ad9-4358-89eb-b521a2e7461d","result":null,"timestamp":1563489519794,"_id":"zkOdxo2AmM8SqGGO"}
-{"uuid":"e64bd786-f642-4b42-87af-071b498741d7","calories":"11111111","num_meals":"4","timestamp":1563490444487,"_id":"mOZZ8KGqlDbAJiFN"}
+{"uuid":"a710fae6-eaad-4002-8d05-de7039afafad","calories":"150","num_meals":"4","timestamp":1563537242078,"_id":"Wpv7OirmdeDngNnU"}
+{"uuid":"b34128c5-5569-47fe-89b3-e576412b74c0","calories":"100","num_meals":"4","timestamp":1563537268290,"_id":"kBmqgA3LtO227NWx"}
+{"uuid":"1790e8ea-8ca4-43bb-bb22-f22b2fd484dc","calories":"200","num_meals":"4","timestamp":1563537313864,"_id":"pGJ2FOjT2z6MHwY0"}
+{"uuid":"fe0d4209-d8d0-4815-b1e2-290c3acaa9e1","calories":"140","num_meals":"4","timestamp":1563537360597,"_id":"ng59EWq7sGvIpdDW"}
