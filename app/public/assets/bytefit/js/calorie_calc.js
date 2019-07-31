@@ -124,16 +124,15 @@ function calculate() {
     // Write the result to the screen
  
 
-    document.getElementById("calories").value = result;
 
 //checks to see if result is valid, if no then it prints an error message, and sets the manual calorie box to default.
     if (isNaN(result)){
         document.getElementById("answer").innerHTML = "You have not filled in the form correctly, please try again!";
         document.getElementById("calories").value = 2000;
-
     }
     //if yes then it prints cal's and macros
     else {
+        document.getElementById("calories").value = result;
         document.getElementById("answer").innerHTML = "Your expected calorie intake (daily) is: " + result;
         document.getElementById("macros").innerHTML = "A balanced macronutrient ratio for you would be: " +
             "Carbs: " + carbs + "g " +

@@ -1,12 +1,28 @@
+require('./db/db')
 const express = require('express');
 // nedb is a lightweight mongodb
 const Datastore = require('nedb');
 const app = express();
 const port = 4444;
+const userController = require('./controllers/userController');
+const path = require('path');
+const exphbs = require('express-handlebars'); 
+const bodyparser = require('body-parser');
+//config for handlebars and path
+
+app.use(bodyparser.urlencoded({
+    extended: true
+}));
+app.use(bodyparser.json());
+app.set('views', path.join(__dirname));
+app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'index.html', layoutsDir: __dirname}));
+app.set('view engine', 'hbs');
+
 
 app.listen(port, () => console.log(`Server listening on port http://127.0.0.1:${port}`));
 app.use(express.static('public'));
 app.use(express.json({ limit: '1mb' }));
+app.use('/users', userController);
 
 // nedb's recommended way to define a database
 const database = new Datastore('db/users.db');

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/thirdparty/fontawesome/fontawesome.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>ByteFit</title>
 </head>
 
@@ -148,6 +149,7 @@
                                                 value="100">
                                             <span class="input-group-text"> kg </span>
                                         </div>
+                                        <p id="metricFail"></p>
                                     </div>
                                     <div id="imperialUnits">
                                         <div class="input-group form-group row">
@@ -242,6 +244,10 @@
         <script src="assets/thirdparty/fontawesome/all.js"></script>
         <script src="https://unpkg.com/popper.js@1"></script>
         <script src="https://unpkg.com/tippy.js@4"></script>
+        <script>
+        $(document).on("click", ".navbar-right .dropdown-menu", function(e){
+    e.stopPropagation();
+});</script>
 </body>
 
 </html>
