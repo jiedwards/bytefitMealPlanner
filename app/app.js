@@ -1,28 +1,78 @@
-require('./db/db')
 const express = require('express');
 // nedb is a lightweight mongodb
 const Datastore = require('nedb');
 const app = express();
 const port = 4444;
-const userController = require('./controllers/userController');
-const path = require('path');
-const exphbs = require('express-handlebars'); 
-const bodyparser = require('body-parser');
-//config for handlebars and path
+const expressLayouts = require('express-ejs-layouts');
+const mongoose = require('mongoose');
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require('passport');
 
-app.use(bodyparser.urlencoded({
-    extended: true
-}));
-app.use(bodyparser.json());
-app.set('views', path.join(__dirname));
-app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'index.html', layoutsDir: __dirname}));
-app.set('view engine', 'hbs');
+
+//passport config
+require('./config/passport')(passport);
+
+//config for handlebars and path
+mongoose.connect('mongodb://localhost/userAccounts');
+let db = mongoose.connection;
+
+//Check for DB errors
+
+db.on('error', function(err){
+    console.log(err);
+})
+
+//Check connection
+db.once('open', function(){
+    console.log('connected to MongoDB');
+})
+
+//Bring in models
+let User = require('./db/usersDB')
+
+//ejs
+app.use(expressLayouts);
+app.set('view engine', 'ejs');
+
+// BodyParser
+app.use(express.urlencoded({ extended: false }));
+
+//Express Session 
+app.use(
+    session({
+      secret: 'secret',
+      resave: true,
+      saveUninitialized: true
+    })
+  );
+
+  //Passport 
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Connect Flash
+app.use(flash());
+
+//Global Vars
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+}) 
+
+//routes
+app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
+
+app.use(express.static(__dirname + '/public'));
 
 
 app.listen(port, () => console.log(`Server listening on port http://127.0.0.1:${port}`));
-app.use(express.static('public'));
-app.use(express.json({ limit: '1mb' }));
-app.use('/users', userController);
+//commented out in login/reg vid
+// app.use(express.static('public'));
+// app.use(express.json({ limit: '1mb' }));
 
 // nedb's recommended way to define a database
 const database = new Datastore('db/users.db');
