@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
 <html>
-    
+
 
 <head>
     <link rel="stylesheet" href="/assets/thirdparty/bootstrap/css/bootstrap.css">
@@ -14,7 +13,7 @@
 </head>
 
 <body onload='load()'>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
@@ -28,18 +27,18 @@
                     </li>
             </ul>
         </div>
-    </nav>
+    </nav> -->
     <section class="jumbotron text-center" id="banner">
         <div class="container">
-                <img src="assets/bytefit/images/byte.png" height=15% width=15%>
             <h1 class="jumbotron-heading">ByteFit</h1>
+            <img src="/assets/bytefit/images/byte.png" class="center" height=150% width=150%><br>
             <p class="lead text-muted">ByteFit, an application to find what to eat.</p>
-            
+
 
         </div>
     </section>
     <div class="container">
-            <section id="calculation">
+        <section id="calculation">
             <div class="text-center">
 
                 <span>I want to eat <input id="calories" type="number" value="2000" /> calories across
@@ -62,7 +61,7 @@
             <div>
                 </br>
                 <div class="text-center">
-                    <button type="button" class="btn-sm btn-success" data-toggle="modal" onclick="unitChoice(this)"
+                    <button type="button" class="btn btn-success" data-toggle="modal" onclick="unitChoice(this)"
                         data-target="#caloriescalc">
                         How many calories do I need?
                     </button>
@@ -238,10 +237,10 @@
         </section>
         </div>
         <!-- ByteFit Code -->
-        <script src="/assets/bytefit/js/calorie_calc.js></script>
-        <script src="/assets/bytefit/js/pageload.js></script>
-        <script src="/assets/bytefit/js/meals.js></script>
-        <script src="/assets/bytefit/js/widget.js></script>
+        <script src="/assets/bytefit/js/calorie_calc.js"></script>
+        <script src="/assets/bytefit/js/pageload.js"></script>
+        <script src="/assets/bytefit/js/meals.js"></script>
+        <script src="/assets/bytefit/js/widget.js"></script>
         <!-- Third-party Code -->
         <script src="/assets/thirdparty/jquery/jquery.js"></script>
         <script src="/assets/thirdparty/popper/popper.js"></script>
@@ -250,9 +249,10 @@
         <script src="https://unpkg.com/popper.js@1"></script>
         <script src="https://unpkg.com/tippy.js@4"></script>
         <script>
-        $(document).on("click", ".navbar-right .dropdown-menu", function(e){
-    e.stopPropagation();
-});</script>
+            $(document).on("click", ".navbar-right .dropdown-menu", function (e) {
+                e.stopPropagation();
+            });
+        </script>
 </body>
 
 </html>

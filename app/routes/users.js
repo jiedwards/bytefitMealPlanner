@@ -18,7 +18,7 @@ router.get('/register', (req, res) => (res.render('Register')));
 
 // Register Handle
 router.post('/register', (req, res) => {
-    const { firstName,lastName, email, mobileNum, password, password2 } = req.body;
+    const { firstName, lastName, email, mobileNum, password, password2 } = req.body;
     let errors = [];
 
     //Check required fields
@@ -29,71 +29,71 @@ router.post('/register', (req, res) => {
     //Check passwords match
 
     if (password !== password2) {
-        errors.push({ msg: 'Passwords do not match, try again.'});
+        errors.push({ msg: 'Passwords do not match, try again.' });
     }
 
     //Check pass length
 
     if (password.length < 6) {
-        errors.push({ msg: 'Password should be at least 6 characters'}); 
+        errors.push({ msg: 'Password should be at least 6 characters' });
     }
 
     if (errors.length > 0) {
-        res.render('register',{
-        errors, 
-        firstName,
-        lastName,
-        email,
-        mobileNum,
-        password,
-        password2
+        res.render('register', {
+            errors,
+            firstName,
+            lastName,
+            email,
+            mobileNum,
+            password,
+            password2
         });
     }
     else {
         //Validation Passed
-        User.findOne({ email: email})
-        .then(user => {
-            if(user) {
-               //User Exists 
-               errors.push ({ msg: 'Email is already registered' })
-               res.render('register',{
-                errors, 
-                firstName,
-                lastName,
-                email,
-                mobileNum,
-                password,
-                password2
-                });
-            } else {
-                const newUser = new User({
-                    errors, 
-                    firstName,
-                    lastName,
-                    email,
-                    mobileNum,
-                    password,
-                    password2
-                })
-
-                //Hash Password
-                bcrypt.genSalt(10, (err, salt) => 
-                bcrypt.hash(newUser.password, salt, (err, hash) =>  {
-                    if (err) throw err;
-                    //Set password to hashed
-                    newUser.password = hash;
-
-                    //Save user
-                    newUser.save()
-                    .then(user => {
-                        req.flash('success_msg', 'You are now registered and can log in.');
-                        res.redirect('./login');
+        User.findOne({ email: email })
+            .then(user => {
+                if (user) {
+                    //User Exists 
+                    errors.push({ msg: 'Email is already registered' })
+                    res.render('register', {
+                        errors,
+                        firstName,
+                        lastName,
+                        email,
+                        mobileNum,
+                        password,
+                        password2
+                    });
+                } else {
+                    const newUser = new User({
+                        errors,
+                        firstName,
+                        lastName,
+                        email,
+                        mobileNum,
+                        password,
+                        password2
                     })
-                    .catch(err => console.log(err));
-                }));
 
-            }
-        });
+                    //Hash Password
+                    bcrypt.genSalt(10, (err, salt) =>
+                        bcrypt.hash(newUser.password, salt, (err, hash) => {
+                            if (err) throw err;
+                            //Set password to hashed
+                            newUser.password = hash;
+
+                            //Save user
+                            newUser.save()
+                                .then(user => {
+                                    req.flash('success_msg', 'You are now registered and can log in.');
+                                    res.redirect('./login');
+                                })
+                                .catch(err => console.log(err));
+                        }));
+
+                }
+            });
     }
 });
 
@@ -106,8 +106,8 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 });
 
-//Logout HAndle
-router.get('/logout', (req,res) => {
+//Logout Handle
+router.get('/logout', (req, res) => {
     req.logout();
     req.flash('success_msg', 'You are logged out');
     res.redirect('/users/login');

@@ -55,12 +55,12 @@ function moreInfo(choice) {
 
     tippy('#goalTooltip', {
         placement: 'right',
-        content: "Why we need this data? <p>If <u>lose weight</u> is chosen, a calorie defecit of 500 calories is applied with the aim to lose 1lb per week</p><p>If <u>gain weight</u> is chosen, a calorie surplus of 500 calories is applied with the aim to gain 1lb per week</p> <p>If <u>maintain weight</u> is chosen, no calorie defecit/surplus is applied</p>",
+        content: "Why we need this data? <br><h7>If <u>lose weight</u> is chosen, a calorie defecit of 500 calories is applied with the aim to lose 1lb per week</h7><br><h7>If <u>gain weight</u> is chosen, a calorie surplus of 500 calories is applied with the aim to gain 1lb per week</h7><br><h7>If <u>maintain weight</u> is chosen, no calorie defecit/surplus is applied</h7>",
     })
 
     tippy('#activityTooltip', {
         placement: 'right',
-        content: "Why we need this data? <p>To provide you with an accurate calorie reading, it's important to know how active you are on a daily basis as this factor contributes to your daily calorie allowance.</p> <p><u>Sedentary</u>: Very little exercise weekly </p> <p><u>Lightly Active</u>: Light Exercise: 1-3 days per week </p> <p><u>Moderately Active</u>: A good amount of exercise, 5-7 times per week </p> <p><u>Very Active</u>: Hard Exercise Daily: 2x's per day </p> <p><u>Extremely Active</u>: Hard Exercise: Twice or more daily, marathon training, triathalon etc. </p>",
+        content: "Why we need this data? <br><h7>To provide you with an accurate calorie reading, it's important to know how active you are on a daily basis as this factor contributes to your daily calorie allowance.</h7> <br> <h7><u>Sedentary</u>: Very little exercise weekly </h7><br><h7><u>Lightly Active</u>: Light Exercise: 1-3 days per week </h7><br><h7><u>Moderately Active</u>: A good amount of exercise, 5-7 times per week </h7><br><h7><u>Very Active</u>: Hard Exercise Daily: 2x's per day </h7><br><h7><u>Extremely Active</u>: Hard Exercise: Twice or more daily, marathon training, triathalon etc. </h7>",
     })
 }
 
@@ -122,11 +122,11 @@ function calculate() {
     var fats = Math.round((result * 0.3) / 4);
     var proteins = Math.round((result * 0.2) / 9);
     // Write the result to the screen
- 
 
 
-//checks to see if result is valid, if no then it prints an error message, and sets the manual calorie box to default.
-    if (isNaN(result)){
+
+    //checks to see if result is valid, if no then it prints an error message, and sets the manual calorie box to default.
+    if (isNaN(result)) {
         document.getElementById("answer").innerHTML = "You have not filled in the form correctly, please try again!";
         document.getElementById("calories").value = 2000;
     }

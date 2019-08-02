@@ -67,6 +67,8 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 
 app.use(express.static(__dirname + '/public'));
+app.use("/public", express.static('./public/'));
+
 
 
 app.listen(port, () => console.log(`Server listening on port http://127.0.0.1:${port}`));
