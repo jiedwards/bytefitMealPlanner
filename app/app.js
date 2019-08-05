@@ -14,57 +14,61 @@ const passport = require('passport');
 require('./config/passport')(passport);
 
 //config for handlebars and path
-mongoose.connect('mongodb://localhost/userAccounts');
+mongoose.connect('mongodb://localhost/byteFit');
 let db = mongoose.connection;
 
 //Check for DB errors
 
-db.on('error', function(err){
+db.on('error', function (err) {
     console.log(err);
 })
 
 //Check connection
-db.once('open', function(){
+db.once('open', function () {
     console.log('connected to MongoDB');
 })
 
 //Bring in models
-let User = require('./db/usersDB')
+let User = require('./db/usersDB');
+let Food = require('./db/foodDB');
 
 //ejs
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 // BodyParser
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+    extended: false
+}));
 
 //Express Session 
 app.use(
     session({
-      secret: 'secret',
-      resave: true,
-      saveUninitialized: true
+        secret: 'secret',
+        resave: true,
+        saveUninitialized: true
     })
-  );
+);
 
-  //Passport 
+//Passport initialises the session for the User.
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Connect Flash
 app.use(flash());
 
-//Global Vars
+//Global Vars - Allows popup messages to occur with relevant information.
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
     next();
-}) 
+})
 
-//routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use('/foods', require('./routes/foods'));
+
 
 app.use(express.static(__dirname + '/public'));
 app.use("/public", express.static('./public/'));
@@ -72,9 +76,6 @@ app.use("/public", express.static('./public/'));
 
 
 app.listen(port, () => console.log(`Server listening on port http://127.0.0.1:${port}`));
-//commented out in login/reg vid
-// app.use(express.static('public'));
-// app.use(express.json({ limit: '1mb' }));
 
 // nedb's recommended way to define a database
 const database = new Datastore('db/users.db');

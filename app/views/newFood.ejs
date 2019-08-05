@@ -1,0 +1,19 @@
+<h1 class="mt-4">New Food</h1>
+<% include ./partials/messages %>
+
+<form action="/foods/newFood" method="POST">
+
+  <div class="form-group">
+    <label for="foodDesc">Food Description</label>
+    <input type="text" id="foodDesc" name="foodDesc" class="form-control" placeholder="Enter foodDesc"
+      value="<%= typeof foodDesc != 'undefined' ? foodDesc : '' %>" />
+  </div>
+  <div class="form-group">
+    <label for="calories">Calories</label>
+    <input type="number" id="calories" name="calories" class="form-control" placeholder="Enter calories"
+      value="<%= typeof calories != 'undefined' ? calories : '' %>" />
+  </div>
+  <button type="submit" class="btn btn-primary btn-block">
+    Submit Food
+  </button>
+</form>

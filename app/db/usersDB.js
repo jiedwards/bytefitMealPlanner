@@ -20,6 +20,10 @@ var userSchema = mongoose.Schema({
     mobileNum: {
         type: Number,
         required: true
+    },
+    calResult: {
+        type: Number,
+        required: false
     }
 });
 
