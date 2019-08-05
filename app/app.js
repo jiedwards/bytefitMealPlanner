@@ -14,7 +14,7 @@ const passport = require('passport');
 require('./config/passport')(passport);
 
 //config for handlebars and path
-mongoose.connect('mongodb://localhost/userAccounts');
+mongoose.connect('mongodb://localhost/byteFit');
 let db = mongoose.connection;
 
 //Check for DB errors
