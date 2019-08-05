@@ -8,13 +8,13 @@ const passport = require('passport');
 const User = require('../db/usersDB')
 
 //Home Page
-router.get('/home', (req, res) => (res.render('Home')));
+router.get('/home', (req, res) => (res.render('home')));
 
 //Login Page
-router.get('/login', (req, res) => (res.render('Login')));
+router.get('/login', (req, res) => (res.render('login')));
 
 //Register Page
-router.get('/register', (req, res) => (res.render('Register')));
+router.get('/register', (req, res) => (res.render('register')));
 
 // Register Handle
 router.post('/register', (req, res) => {
