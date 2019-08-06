@@ -16,6 +16,10 @@ p, body, span{
     font-size: 18px;
 }
 
+#additionalFoodNutrients {
+    display: none;
+}
+
 
     .loginForm {
         margin-top: 10%;

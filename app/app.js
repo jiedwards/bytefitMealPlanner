@@ -73,6 +73,12 @@ app.use('/foods', require('./routes/foods'));
 app.use(express.static(__dirname + '/public'));
 app.use("/public", express.static('./public/'));
 
+//checks whether a user is logged in
+app.use(function (req, res, next) {
+    res.locals.login = req.isAuthenticated();
+    next();
+});
+
 
 
 app.listen(port, () => console.log(`Server listening on port http://127.0.0.1:${port}`));

@@ -9,9 +9,12 @@ foodRouter.get('/newFood', (req, res) => (res.render('newFood')));
 
 //New Food Handle
 foodRouter.post('/newFood', (req, res) => {
+    console.log(req.body);
     const {
-        foodDesc,
-        calories
+        foodDesc, calories, carbs, fats, protein, unitOptionOneDesc, unitOptionOneMeasurement,
+        unitOptionTwoDesc, unitOptionTwoMeasurement, fiber, calcium, iron, magnesium,
+        phosphorus, potassium, sodium, zinc, copper, manganese, selenium, vitaminC, vitaminB6,
+        vitaminB12, vitaminA, vitaminE, vitaminD, vitaminK, cholesterol
     } = req.body;
     let errors = [];
 
@@ -43,13 +46,19 @@ foodRouter.post('/newFood', (req, res) => {
                     res.render('newFood', {
                         errors,
                         foodDesc,
-                        calories
+                        calories, carbs, fats, protein, unitOptionOneDesc, unitOptionOneMeasurement,
+                        unitOptionTwoDesc, unitOptionTwoMeasurement, fiber, calcium, iron, magnesium,
+                        phosphorus, potassium, sodium, zinc, copper, manganese, selenium, vitaminC, vitaminB6,
+                        vitaminB12, vitaminA, vitaminE, vitaminD, vitaminK, cholesterol
                     });
                 } else {
                     const newFood = new Food({
                         errors,
                         foodDesc,
-                        calories
+                        calories, carbs, fats, protein, unitOptionOneDesc, unitOptionOneMeasurement,
+                        unitOptionTwoDesc, unitOptionTwoMeasurement, fiber, calcium, iron, magnesium,
+                        phosphorus, potassium, sodium, zinc, copper, manganese, selenium, vitaminC, vitaminB6,
+                        vitaminB12, vitaminA, vitaminE, vitaminD, vitaminK, cholesterol
                     })
 
                     //Save Food

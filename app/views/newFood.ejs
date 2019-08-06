@@ -1,17 +1,150 @@
-<h1 class="mt-4">New Food</h1>
+<head>
+  <link rel="stylesheet" href="/assets/bytefit/css/styles.css">
+</head>
+<h1 class="mt-4">Add a new food to be used in your meal plans!</h1>
 <% include ./partials/messages %>
+
+<button id="additionalFieldsBtn" class="btn btn-success" onclick="toggleFoodFields()">Show additional Fields</button>
 
 <form action="/foods/newFood" method="POST">
 
   <div class="form-group">
     <label for="foodDesc">Food Description</label>
     <input type="text" id="foodDesc" name="foodDesc" class="form-control" placeholder="Enter foodDesc"
-      value="<%= typeof foodDesc != 'undefined' ? foodDesc : '' %>" />
+      value="<%= typeof foodDesc != 'undefined' ? foodDesc : '' %>" required />
   </div>
   <div class="form-group">
     <label for="calories">Calories</label>
     <input type="number" id="calories" name="calories" class="form-control" placeholder="Enter calories"
-      value="<%= typeof calories != 'undefined' ? calories : '' %>" />
+      value="<%= typeof calories != 'undefined' ? calories : '' %>" required />
+  </div>
+
+  <!-- Unit measurements need to be understood better and factored in. -->
+
+  <div class="input-group form-group row">
+    <label for="carbs" class="col-md-2 col-form-label">Measurement</label>
+    <input type="number" class="form-control col-md-2" id="unitOptionOneMeasurement" name="unitOptionOneMeasurement"
+      placeholder="1" value="<%= typeof unitOptionOneMeasurement != 'undefined' ? unitOptionOneMeasurement : '' %>">
+    <select id="unitOptionOneDesc" name="unitOptionOneDesc" class="col-md-4 dropdown-toggler">
+      <option value="cup">cup</option>
+      <option value="grams">grams</option>
+      <option value="portion" selected="selected">portion</option>
+
+    </select>
+  </div>
+  <div class="input-group form-group row">
+    <label for="carbs" class="col-md-1 col-form-label">carbs</label>
+    <input type="number" class="form-control col-md-2" id="carbs" name="carbs"
+      value="<%= typeof carbs != 'undefined' ? carbs : '' %>">
+    <span class="input-group-text"> g </span>
+    <label for="fats" class="col-md-2 col-form-label">total fats</label>
+    <input type="number" class="form-control col-md-2" id="fats" name="fats"
+      value="<%= typeof fats != 'undefined' ? fats : '' %>">
+    <span class="input-group-text"> g </span>
+    <label for="protein" class="col-md-1 col-form-label">protein</label>
+    <input type="number" class="form-control col-md-2" id="protein" name="protein"
+      value="<%= typeof protein != 'undefined' ? protein : '' %>">
+    <span class="input-group-text"> g </span>
+  </div>
+  <div id="additionalFoodNutrients">
+
+    <div class="input-group form-group row">
+      <label for="fiber" class="col-md-1 col-form-label">fiber</label>
+      <input type="number" class="form-control col-md-2" id="fiber" name="fiber"
+        value="<%= typeof fiber != 'undefined' ? fiber : '' %>">
+      <span class="input-group-text"> g </span>
+      <label for="calcium" class="col-md-2 col-form-label">calcium</label>
+      <input type="number" class="form-control col-md-2" id="calcium" name="calcium"
+        value="<%= typeof calcium != 'undefined' ? calcium : '' %>">
+      <span class="input-group-text"> g </span>
+      <label for="iron" class="col-md-1 col-form-label">iron</label>
+      <input type="number" class="form-control col-md-2" id="iron" name="iron"
+        value="<%= typeof iron != 'undefined' ? iron : '' %>">
+      <span class="input-group-text"> g </span>
+    </div>
+
+    <div class="input-group form-group row">
+      <label for="magnesium" class="col-md-1 col-form-label">magnesium</label>
+      <input type="number" class="form-control col-md-2" id="magnesium" name="magnesium"
+        value="<%= typeof magnesium != 'undefined' ? magnesium : '' %>">
+      <span class="input-group-text"> g </span>
+      <label for="phosphorus" class="col-md-2 col-form-label">phosphorus</label>
+      <input type="number" class="form-control col-md-2" id="phosphorus" name="phosphorus"
+        value="<%= typeof phosphorus != 'undefined' ? phosphorus : '' %>">
+      <span class="input-group-text"> g </span>
+      <label for="potassium" class="col-md-1 col-form-label">potassium</label>
+      <input type="number" class="form-control col-md-2" id="potassium" name="potassium"
+        value="<%= typeof potassium != 'undefined' ? potassium : '' %>">
+      <span class="input-group-text"> g </span>
+    </div>
+
+    <div class="input-group form-group row">
+      <label for="sodium" class="col-md-1 col-form-label">sodium</label>
+      <input type="number" class="form-control col-md-2" id="sodium" name="sodium"
+        value="<%= typeof sodium != 'undefined' ? sodium : '' %>">
+      <span class="input-group-text"> g </span>
+      <label for="zinc" class="col-md-2 col-form-label">zinc</label>
+      <input type="number" class="form-control col-md-2" id="zinc" name="zinc"
+        value="<%= typeof zinc != 'undefined' ? zinc : '' %>">
+      <span class="input-group-text"> g </span>
+      <label for="copper" class="col-md-1 col-form-label">copper</label>
+      <input type="number" class="form-control col-md-2" id="copper" name="copper"
+        value="<%= typeof copper != 'undefined' ? copper : '' %>">
+      <span class="input-group-text"> g </span>
+    </div>
+
+    <div class="input-group form-group row">
+      <label for="manganese" class="col-md-1 col-form-label">manganese</label>
+      <input type="number" class="form-control col-md-2" id="manganese" name="manganese"
+        value="<%= typeof manganese != 'undefined' ? manganese : '' %>">
+      <span class="input-group-text"> g </span>
+      <label for="selenium" class="col-md-2 col-form-label">selenium</label>
+      <input type="number" class="form-control col-md-2" id="selenium" name="selenium"
+        value="<%= typeof selenium != 'undefined' ? selenium : '' %>">
+      <span class="input-group-text"> g </span>
+      <label for="vitaminC" class="col-md-1 col-form-label">vitaminC</label>
+      <input type="number" class="form-control col-md-2" id="vitaminC" name="vitaminC"
+        value="<%= typeof vitaminC != 'undefined' ? vitaminC : '' %>">
+      <span class="input-group-text"> g </span>
+    </div>
+
+    <div class="input-group form-group row">
+      <label for="vitaminB6" class="col-md-1 col-form-label">vitaminB6</label>
+      <input type="number" class="form-control col-md-2" id="vitaminB6" name="vitaminB6"
+        value="<%= typeof vitaminB6 != 'undefined' ? vitaminB6 : '' %>">
+      <span class="input-group-text"> g </span>
+      <label for="vitaminB12" class="col-md-2 col-form-label">vitaminB12</label>
+      <input type="number" class="form-control col-md-2" id="vitaminB12" name="vitaminB12"
+        value="<%= typeof vitaminB12 != 'undefined' ? vitaminB12 : '' %>">
+      <span class="input-group-text"> g </span>
+      <label for="vitaminA" class="col-md-1 col-form-label">vitaminA</label>
+      <input type="number" class="form-control col-md-2" id="vitaminA" name="vitaminA"
+        value="<%= typeof vitaminA != 'undefined' ? vitaminA : '' %>">
+      <span class="input-group-text"> g </span>
+    </div>
+
+    <div class="input-group form-group row">
+      <label for="vitaminE" class="col-md-1 col-form-label">vitaminE</label>
+      <input type="number" class="form-control col-md-2" id="vitaminE" name="vitaminE"
+        value="<%= typeof vitaminE != 'undefined' ? vitaminE : '' %>">
+      <span class="input-group-text"> g </span>
+      <label for="vitaminD" class="col-md-2 col-form-label">vitaminD</label>
+      <input type="number" class="form-control col-md-2" id="vitaminD" name="vitaminD"
+        value="<%= typeof vitaminD != 'undefined' ? vitaminD : '' %>">
+      <span class="input-group-text"> g </span>
+      <label for="vitaminK" class="col-md-1 col-form-label">vitaminK</label>
+      <input type="number" class="form-control col-md-2" id="vitaminK" name="vitaminK"
+        value="<%= typeof vitaminK != 'undefined' ? vitaminK : '' %>">
+      <span class="input-group-text"> g </span>
+    </div>
+
+    <div class="input-group form-group row">
+      <label for="cholesterol" class="col-md-1 col-form-label">cholesterol</label>
+      <input type="number" class="form-control col-md-2" id="cholesterol" name="cholesterol"
+        value="<%= typeof cholesterol != 'undefined' ? cholesterol : '' %>">
+      <span class="input-group-text"> g </span>
+    </div>
+
   </div>
   <button type="submit" class="btn btn-primary btn-block">
     Submit Food

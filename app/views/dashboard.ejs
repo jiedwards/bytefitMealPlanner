@@ -1,4 +1,13 @@
 <h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= name %></p>
 <a href="/users/logout" class="btn btn-secondary">Logout</a>
 <a href="/foods/newFood" class="btn btn-primary">Add a new food</a>
+<%= userId %>
+<!-- check if user exists, if so do something-->
+<script>
+    if (userId) {
+        document.write(userId);
+    } else {
+        document.write("test fails");
+    }
+</script>
+<p class="lead mb-3">Welcome <%= name %></p>
