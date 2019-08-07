@@ -3,35 +3,31 @@ var router = express.Router();
 const mongoose = require('mongoose');
 const Food = mongoose.model('foods');
 
+//base url for foods context
 router.get('/', (req, res) => {
-    console.log("TEST" + req + res);
 
+    //Generates a new page as part of the foods context
     res.render("foods/newFood", {
         viewTitle: "Insert New Food to use locally"
     });
 });
-
+    //Controls what happens when a post request is made on the page. It passes the information into the insertRecord function.
 router.post('/', (req, res) => {
-    console.log("TEST" + req + res);
     insertRecord(req, res);
 });
 
 function insertRecord(req, res) {
-    console.log("TEST" + req + res);
 
     var food = new Food();
 
     food.foodId = req.body.foodId;
     food.foodDesc = req.body.foodDesc;
-    // user.email = req.body.email;
-    // user.password = req.body.password;
-    // user.mobileNum = req.body.mobileNum;
     food.save((err, doc) => {
         if (!err) {
-            console.log("user submitted");
+            console.log("food submitted");
             res.redirect('users/login');
         } else {
-            console.log('Error during user insertion : ' + err);
+            console.log('Error during food insertion : ' + err);
         }
     });
 

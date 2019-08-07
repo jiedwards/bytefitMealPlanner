@@ -1,4 +1,6 @@
 module.exports = {
+
+    //Checks whether a user is authenticated, if not, it redirects the user
     ensureAuthenticated: function(req, res, next) {
         if (req.isAuthenticated()) {
             return next();

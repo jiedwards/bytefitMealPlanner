@@ -38,8 +38,7 @@ foodRouter.post('/newFood', (req, res) => {
             })
             .then(food => {
                 if (food) {
-                    //User Exists 
-
+                    // In this case, the food exists and an error message is thrown.
                     errors.push({
                         msg: 'Food is already registered'
                     })
@@ -52,6 +51,7 @@ foodRouter.post('/newFood', (req, res) => {
                         vitaminB12, vitaminA, vitaminE, vitaminD, vitaminK, cholesterol
                     });
                 } else {
+                    //Alternatively a new food object is made, the request values are stored and this food will be saved.
                     const newFood = new Food({
                         errors,
                         foodDesc,

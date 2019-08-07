@@ -1,7 +1,11 @@
 <h1 class="mt-4">Dashboard</h1>
 <a href="/users/logout" class="btn btn-secondary">Logout</a>
 <a href="/foods/newFood" class="btn btn-primary">Add a new food</a>
-<%= userId %>
+<% if(userId != null) { %>
+    <li>Yes! It works</li>
+    <% } else {%>
+<li>Didn't work, unfortunately</li>
+<% } %>
 <!-- check if user exists, if so do something-->
 <script>
     if (userId) {

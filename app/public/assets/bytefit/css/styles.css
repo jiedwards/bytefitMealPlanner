@@ -20,7 +20,7 @@ p, body, span{
     display: none;
 }
 
-
+/* Custom CSS for the login page */
     .loginForm {
         margin-top: 10%;
     }

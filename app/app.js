@@ -9,7 +9,6 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 
-
 //passport config
 require('./config/passport')(passport);
 
@@ -18,7 +17,6 @@ mongoose.connect('mongodb://localhost/byteFit');
 let db = mongoose.connection;
 
 //Check for DB errors
-
 db.on('error', function (err) {
     console.log(err);
 })
@@ -28,11 +26,11 @@ db.once('open', function () {
     console.log('connected to MongoDB');
 })
 
-//Bring in models
+//Bring in models (user schema's)
 let User = require('./db/usersDB');
 let Food = require('./db/foodDB');
 
-//ejs
+//express layouts, described in more detail on layouts view.
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
@@ -65,10 +63,10 @@ app.use((req, res, next) => {
     next();
 })
 
+//Initialises the URL routes declared in the routes folder.
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/foods', require('./routes/foods'));
-
 
 app.use(express.static(__dirname + '/public'));
 app.use("/public", express.static('./public/'));

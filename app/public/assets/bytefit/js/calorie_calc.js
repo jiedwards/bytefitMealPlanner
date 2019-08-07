@@ -31,10 +31,8 @@ function profileTest(genderProfile) {
 }
 
 var imp;
+
 // Function to read unit choice, this is used to hide/show div's, WIP - will be used to change the equation
-
-
-
 function unitChoice(choice) {
 
     if (choice.value == "imperial") {
@@ -50,7 +48,7 @@ function unitChoice(choice) {
         $("#metricUnits").show()
     }
 }
-
+// Displays more information on certain area's of the page when scrolled over.
 function moreInfo(choice) {
 
     tippy('#goalTooltip', {
@@ -63,10 +61,9 @@ function moreInfo(choice) {
         content: "Why we need this data? <br><h7>To provide you with an accurate calorie reading, it's important to know how active you are on a daily basis as this factor contributes to your daily calorie allowance.</h7> <br> <h7><u>Sedentary</u>: Very little exercise weekly </h7><br><h7><u>Lightly Active</u>: Light Exercise: 1-3 days per week </h7><br><h7><u>Moderately Active</u>: A good amount of exercise, 5-7 times per week </h7><br><h7><u>Very Active</u>: Hard Exercise Daily: 2x's per day </h7><br><h7><u>Extremely Active</u>: Hard Exercise: Twice or more daily, marathon training, triathalon etc. </h7>",
     })
 }
-
+//Function to calculate user calorie intake.
 function calculate() {
-    //heavy lifting!
-
+    //retrieves the values selected on the form to calculate a users' calorie intake.
     var age = document.getElementById("age").value;
     var activityLevel = document.getElementById("activityLevel");
     activityLevel = activityLevel.options[activityLevel.selectedIndex].value;

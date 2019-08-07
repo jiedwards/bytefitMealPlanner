@@ -2,6 +2,7 @@
     ('[data-toggle="tooltip"]').tooltip();
 });
 
+//Toggles the additional field values when inserting the new foods.
 function toggleFoodFields() {
     var x = document.getElementById("additionalFoodNutrients");
     var fieldsButton = document.getElementById("additionalFieldsBtn");

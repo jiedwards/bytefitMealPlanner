@@ -6,20 +6,18 @@ const User = mongoose.model('users');
 router.get('/', (req, res) => {
     console.log("TEST3" + req.body + res.body);
 
+    //Generates a new page as part of the users context
     res.render("users/register", {
         viewTitle: "Insert Employee"
     });
 });
-
+    //Controls what happens when a post request is made on the page. It passes the information into the insertRecord function.
 router.post('/', (req, res) => {
-    console.log("TEST3" + req.body + res.body);
-
     insertRecord(req, res);
 });
 
 function insertRecord(req, res) {
-    console.log("TEST3" + req.body + res.body);
-
+    //populates the user object with the values in the request, and attempts to save the object as a new user.
     var user = new User();
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;

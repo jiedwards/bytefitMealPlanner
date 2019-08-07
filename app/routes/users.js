@@ -37,7 +37,7 @@ router.post('/register', (req, res) => {
     if (password.length < 6) {
         errors.push({ msg: 'Password should be at least 6 characters' });
     }
-
+    //If there are any errors, throw an error message.
     if (errors.length > 0) {
         res.render('register', {
             errors,
@@ -54,7 +54,7 @@ router.post('/register', (req, res) => {
         User.findOne({ email: email })
             .then(user => {
                 if (user) {
-                    //User Exists 
+                    // In this case, a user exists and an error message is thrown.
                     errors.push({ msg: 'Email is already registered' })
                     res.render('register', {
                         errors,
@@ -66,6 +66,7 @@ router.post('/register', (req, res) => {
                         password2
                     });
                 } else {
+                    //Alternatively a new user object is made, the request values are stored and this user will be saved.
                     const newUser = new User({
                         errors,
                         firstName,
