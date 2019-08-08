@@ -8,6 +8,8 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const hbs = require('express-handlebars');
+var path = require('path');
 
 //passport config
 require('./config/passport')(passport);
@@ -31,7 +33,9 @@ let User = require('./db/usersDB');
 let Food = require('./db/foodDB');
 
 //express layouts, described in more detail on layouts view.
-app.use(expressLayouts);
+app.engine('ejs', require('ejs-locals'));
+app.set('views', __dirname + '/views');
+// app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 // BodyParser
@@ -47,6 +51,7 @@ app.use(
         saveUninitialized: true
     })
 );
+
 
 //Passport initialises the session for the User.
 app.use(passport.initialize());

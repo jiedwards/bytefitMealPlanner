@@ -11,10 +11,23 @@ const User = require('../db/usersDB')
 router.get('/home', (req, res) => (res.render('home')));
 
 //Login Page
-router.get('/login', (req, res) => (res.render('login')));
+
+router.get('/login', (req, res) =>{
+    if (req.isAuthenticated()) {
+        res.redirect('/dashboard')
+    }
+    else {
+        (res.render('login'))
+    }});
 
 //Register Page
-router.get('/register', (req, res) => (res.render('register')));
+router.get('/register', (req, res) => {
+    if (req.isAuthenticated()) {
+        res.redirect('/dashboard')
+    }
+    else {
+        (res.render('register'))
+    }});
 
 // Register Handle
 router.post('/register', (req, res) => {
