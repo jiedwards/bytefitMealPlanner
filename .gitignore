@@ -1,4 +1,4 @@
-*.db
+node-modules
 build
 npm-debug.log
 .env

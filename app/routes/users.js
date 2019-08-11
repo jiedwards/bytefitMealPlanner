@@ -8,13 +8,26 @@ const passport = require('passport');
 const User = require('../db/usersDB')
 
 //Home Page
-router.get('/home', (req, res) => (res.render('Home')));
+router.get('/home', (req, res) => (res.render('home')));
 
 //Login Page
-router.get('/login', (req, res) => (res.render('Login')));
+
+router.get('/login', (req, res) =>{
+    if (req.isAuthenticated()) {
+        res.redirect('/dashboard')
+    }
+    else {
+        (res.render('login'))
+    }});
 
 //Register Page
-router.get('/register', (req, res) => (res.render('Register')));
+router.get('/register', (req, res) => {
+    if (req.isAuthenticated()) {
+        res.redirect('/dashboard')
+    }
+    else {
+        (res.render('register'))
+    }});
 
 // Register Handle
 router.post('/register', (req, res) => {
@@ -37,7 +50,7 @@ router.post('/register', (req, res) => {
     if (password.length < 6) {
         errors.push({ msg: 'Password should be at least 6 characters' });
     }
-
+    //If there are any errors, throw an error message.
     if (errors.length > 0) {
         res.render('register', {
             errors,
@@ -54,7 +67,7 @@ router.post('/register', (req, res) => {
         User.findOne({ email: email })
             .then(user => {
                 if (user) {
-                    //User Exists 
+                    // In this case, a user exists and an error message is thrown.
                     errors.push({ msg: 'Email is already registered' })
                     res.render('register', {
                         errors,
@@ -66,6 +79,7 @@ router.post('/register', (req, res) => {
                         password2
                     });
                 } else {
+                    //Alternatively a new user object is made, the request values are stored and this user will be saved.
                     const newUser = new User({
                         errors,
                         firstName,
@@ -96,6 +110,18 @@ router.post('/register', (req, res) => {
             });
     }
 });
+
+// Register Handle
+router.put('/userCal', (req, res) => {
+    User.findByIdAndUpdate({ objectId: req.user.id}, req.body).then(function(){
+        User.findOne({ objectId: req.user.id}).then(function(user){
+            res.send(user);
+            console.log(user);
+        })
+        
+    })
+    }
+);
 
 // Login Handle
 router.post('/login', (req, res, next) => {

@@ -1,5 +1,6 @@
 let mongoose = require('mongoose');
-
+/* The Schema is what defines the properties of the object User,
+these fields are populated/accessed with information from a POST/GET request. */
 var userSchema = mongoose.Schema({
     firstName: {
         type: String,
@@ -20,6 +21,10 @@ var userSchema = mongoose.Schema({
     mobileNum: {
         type: Number,
         required: true
+    },
+    calResult: {
+        type: Number,
+        required: false
     }
 });
 

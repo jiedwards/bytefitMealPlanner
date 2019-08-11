@@ -1,7 +1,11 @@
+   <!-- Decides which layout to show depending on if user is logged in or not.-->
+    <% if (userId) { %>
+    <% layout('layouts/authenticatedLayout') %>
+       <% } else { %>
+    <% layout('layouts/layout') %>
+        <% } %>
 <!DOCTYPE html>
 <html>
-
-
 <head>
     <link rel="stylesheet" href="/assets/thirdparty/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/assets/bytefit/css/styles.css">
@@ -12,7 +16,10 @@
     <title>ByteFit</title>
 </head>
 
+
 <body onload='load()'>
+    <% include ./partials/messages %>
+
     <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
@@ -31,7 +38,7 @@
     <section class="jumbotron text-center" id="banner">
         <div class="container">
             <h1 class="jumbotron-heading">ByteFit</h1>
-            <img src="/assets/bytefit/images/byte.png" class="center" height=150% width=150%><br>
+            <img src="/assets/bytefit/images/byte.png" class="center" height=20% width=20%><br>
             <p class="lead text-muted">ByteFit, an application to find what to eat.</p>
 
 
@@ -213,11 +220,14 @@
                                     <br>
                                     <button type="submit" onclick="calculate()" class="btn btn-primary col-md-9">Get my
                                         results!</button>
-                                    <button type="button" class="btn btn-secondary col-md-2"
-                                        data-dismiss="modal">Close</button>
-                                    <br>
+                                    <button type="button" class="btn btn-secondary col-md-2" data-dismiss="modal">Close</button>
+                                    <br><br>
                                     <p id="answer"></p>
                                     <p id="macros"></p>
+                                    <% if (userId) { %>
+                                <button type="submit" onclick="saveUserCal()" class="btn btn-warning col-md-11">Save this new calorie intake</button>
+                                    <% } %>
+
                                 </div>
                             </div>
                         </div>
