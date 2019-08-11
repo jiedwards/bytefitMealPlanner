@@ -122,6 +122,10 @@ var foodSchema = mongoose.Schema({
         type: Boolean,
         required: false
     },
+    userId: {
+        type: String,
+        required: false
+    },
 });
 
 let Food = module.exports = mongoose.model('Food', foodSchema);

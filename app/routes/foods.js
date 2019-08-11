@@ -4,6 +4,7 @@ const foodRouter = express.Router();
 //Food Model
 const Food = require('../db/foodDB')
 
+
 // Retrieves url for newFood page
 foodRouter.get('/newFood', (req, res) => (res.render('newFood')));
 
@@ -14,7 +15,7 @@ foodRouter.post('/newFood', (req, res) => {
         foodDesc, calories, carbs, fats, protein, unitOptionOneDesc, unitOptionOneMeasurement,
         unitOptionTwoDesc, unitOptionTwoMeasurement, fiber, calcium, iron, magnesium,
         phosphorus, potassium, sodium, zinc, copper, manganese, selenium, vitaminC, vitaminB6,
-        vitaminB12, vitaminA, vitaminE, vitaminD, vitaminK, cholesterol
+        vitaminB12, vitaminA, vitaminE, vitaminD, vitaminK, cholesterol, userId
     } = req.body;
     let errors = [];
 
@@ -48,7 +49,7 @@ foodRouter.post('/newFood', (req, res) => {
                         calories, carbs, fats, protein, unitOptionOneDesc, unitOptionOneMeasurement,
                         unitOptionTwoDesc, unitOptionTwoMeasurement, fiber, calcium, iron, magnesium,
                         phosphorus, potassium, sodium, zinc, copper, manganese, selenium, vitaminC, vitaminB6,
-                        vitaminB12, vitaminA, vitaminE, vitaminD, vitaminK, cholesterol
+                        vitaminB12, vitaminA, vitaminE, vitaminD, vitaminK, cholesterol, userId
                     });
                 } else {
                     //Alternatively a new food object is made, the request values are stored and this food will be saved.
@@ -58,7 +59,7 @@ foodRouter.post('/newFood', (req, res) => {
                         calories, carbs, fats, protein, unitOptionOneDesc, unitOptionOneMeasurement,
                         unitOptionTwoDesc, unitOptionTwoMeasurement, fiber, calcium, iron, magnesium,
                         phosphorus, potassium, sodium, zinc, copper, manganese, selenium, vitaminC, vitaminB6,
-                        vitaminB12, vitaminA, vitaminE, vitaminD, vitaminK, cholesterol
+                        vitaminB12, vitaminA, vitaminE, vitaminD, vitaminK, cholesterol, userId
                     })
 
                     //Save Food

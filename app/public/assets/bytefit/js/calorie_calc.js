@@ -140,6 +140,17 @@ function calculate() {
 
 }
 
+//Function to save user calorie intake.
+function saveUserCal() {
+
+    console.log(result);
+ 
+    var url = "/users/userCal"
+    xhr.open("PUT", url, true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    xhr.send(result);
+}
+
 
 function generate_table(data) {
     let uuid = data.uuid;

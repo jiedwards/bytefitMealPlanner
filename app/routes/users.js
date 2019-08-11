@@ -111,6 +111,18 @@ router.post('/register', (req, res) => {
     }
 });
 
+// Register Handle
+router.put('/userCal', (req, res) => {
+    User.findByIdAndUpdate({ objectId: req.user.id}, req.body).then(function(){
+        User.findOne({ objectId: req.user.id}).then(function(user){
+            res.send(user);
+            console.log(user);
+        })
+        
+    })
+    }
+);
+
 // Login Handle
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {

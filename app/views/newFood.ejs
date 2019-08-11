@@ -1,10 +1,15 @@
 <head>
   <link rel="stylesheet" href="/assets/bytefit/css/styles.css">
 </head>
-<% layout('authenticatedLayout') %>
+<% layout('layouts/authenticatedLayout') %>
 
 <h1 class="mt-4">Add a new food to be used in your meal plans!</h1>
 <% include ./partials/messages %>
+    <% if (userId) { %>
+    <h1>hello <%= userId %> </h1>
+       <% } else { %>
+    <h1>fail</h1>
+        <% } %>
 
 <button id="additionalFieldsBtn" class="btn btn-success" onclick="toggleFoodFields()">Show additional Fields</button>
 
@@ -147,8 +152,15 @@
       <span class="input-group-text"> g </span>
     </div>
 
+    <input type="hidden" value="<%= userId %>" name="userId" id="userId">
+
   </div>
   <button type="submit" class="btn btn-primary btn-block">
     Submit Food
   </button>
 </form>
+
+
+<h1 class="mt-4">All the food's added by you are below.</h1>
+
+

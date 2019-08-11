@@ -1,7 +1,8 @@
+   <!-- Decides which layout to show depending on if user is logged in or not.-->
     <% if (userId) { %>
-    <% layout('authenticatedLayout') %>
+    <% layout('layouts/authenticatedLayout') %>
        <% } else { %>
-    <% layout('layout') %>
+    <% layout('layouts/layout') %>
         <% } %>
 <!DOCTYPE html>
 <html>
@@ -219,11 +220,14 @@
                                     <br>
                                     <button type="submit" onclick="calculate()" class="btn btn-primary col-md-9">Get my
                                         results!</button>
-                                    <button type="button" class="btn btn-secondary col-md-2"
-                                        data-dismiss="modal">Close</button>
-                                    <br>
+                                    <button type="button" class="btn btn-secondary col-md-2" data-dismiss="modal">Close</button>
+                                    <br><br>
                                     <p id="answer"></p>
                                     <p id="macros"></p>
+                                    <% if (userId) { %>
+                                <button type="submit" onclick="saveUserCal()" class="btn btn-warning col-md-11">Save this new calorie intake</button>
+                                    <% } %>
+
                                 </div>
                             </div>
                         </div>
