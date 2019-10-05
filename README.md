@@ -56,3 +56,10 @@ app
 
 ```
 
+#### How to set up the project
+
+As soon as you have cloned the project, run the following script:
+
+```
+run.sh
+```
