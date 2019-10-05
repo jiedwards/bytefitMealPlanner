@@ -8,6 +8,42 @@ const Food = require('../db/foodDB')
 // Retrieves url for newFood page
 foodRouter.get('/newFood', (req, res) => (res.render('newFood')));
 
+
+foodRouter.get('/allFoods', (req, res) => {
+    Food.getFoods(function(err, foods){
+        if(err){
+            throw err;
+        }
+        res.json(foods)
+    })
+});
+
+foodRouter.get('/allFoods/:_id', (req, res) => {
+    Food.getFoodById(req.params._id, function(err, food){
+        if(err){
+            throw err;
+        }
+        res.json(food)
+    })
+});
+
+//New Food Put Handle
+foodRouter.put('/updateFood/:_id', (req, res) => {
+    var id = req.params._id;
+    var food = req.body;
+    console.log("helloID" + id);
+    console.log("hello" + req.body)
+
+    Food.updateFood(id, food, {}, function(err, food){
+        if(err){
+            throw err;
+        }
+        console.log("hello passed" + id + " lol now" + food)
+
+        res.json(food)
+    })
+});
+
 //New Food Handle
 foodRouter.post('/newFood', (req, res) => {
     console.log(req.body);
